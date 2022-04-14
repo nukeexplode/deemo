@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/base/ConfigFileReader.h
+map
+-
+string
+-
+
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.cpp
+ConfigFileReader.h
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+stdio.h
+-
+string.h
+-
+
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+map
+-
+string
+-
+
+/home/nukeexplode/Desktop/root/src/base/tests/ConfigFileReader_test.cpp
+ConfigFileReader.h
+/home/nukeexplode/Desktop/root/src/base/tests/ConfigFileReader.h
+string.h
+-
+assert.h
+-
+

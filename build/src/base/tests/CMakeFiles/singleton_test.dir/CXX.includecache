@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/base/Singleton.h
+mutex
+-
+
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.cpp
+ConfigFileReader.h
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+stdio.h
+-
+string.h
+-
+
+/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+map
+-
+string
+-
+
+/home/nukeexplode/Desktop/root/src/base/tests/Singleton_test.cpp
+Singleton.h
+/home/nukeexplode/Desktop/root/src/base/tests/Singleton.h
+iostream
+-
+thread
+-
+memory
+-
+vector
+-
+

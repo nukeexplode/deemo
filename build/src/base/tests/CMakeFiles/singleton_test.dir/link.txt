@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Werror -std=c++17  -rdynamic CMakeFiles/singleton_test.dir/Singleton_test.cpp.o CMakeFiles/singleton_test.dir/__/ConfigFileReader.cpp.o  -o ../../../bin/singleton_test  -lpthread 

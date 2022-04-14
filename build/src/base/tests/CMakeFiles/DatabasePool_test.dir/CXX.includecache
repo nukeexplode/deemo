@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nukeexplode/Desktop/root/src/base/database/Field.h
+algorithm
+-
+string
+-
+
+/home/nukeexplode/Desktop/root/src/base/database/QueryResult.cpp
+QueryResult.h
+/home/nukeexplode/Desktop/root/src/base/database/QueryResult.h
+
+/home/nukeexplode/Desktop/root/src/base/database/QueryResult.h
+mysql/mysql.h
+-
+string
+-
+vector
+-
+map
+-
+assert.h
+-
+iostream
+-
+Field.h
+/home/nukeexplode/Desktop/root/src/base/database/Field.h
+

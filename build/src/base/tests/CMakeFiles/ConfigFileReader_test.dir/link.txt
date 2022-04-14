@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Werror -std=c++17  -rdynamic CMakeFiles/ConfigFileReader_test.dir/ConfigFileReader_test.cpp.o CMakeFiles/ConfigFileReader_test.dir/__/ConfigFileReader.cpp.o  -o ../../../bin/ConfigFileReader_test 

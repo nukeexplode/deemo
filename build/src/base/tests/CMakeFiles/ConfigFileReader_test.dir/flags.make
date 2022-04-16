@@ -6,5 +6,5 @@ CXX_FLAGS = -g -Werror -std=c++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/nukeexplode/Desktop/root/src/base -I/home/nukeexplode/Desktop/root/src/base/database 
+CXX_INCLUDES = -I/home/nukeexplode/Desktop/deemo/src/base -I/home/nukeexplode/Desktop/deemo/src/base/database 
 

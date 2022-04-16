@@ -1,4 +1,4 @@
-# Install script for directory: /home/nukeexplode/Desktop/root
+# Install script for directory: /home/nukeexplode/Desktop/deemo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/nukeexplode/Desktop/root/build/src/base/cmake_install.cmake")
+  include("/home/nukeexplode/Desktop/deemo/build/src/base/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/nukeexplode/Desktop/root/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/nukeexplode/Desktop/deemo/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

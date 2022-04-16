@@ -1,4 +1,4 @@
-# Install script for directory: /home/nukeexplode/Desktop/root/src/base
+# Install script for directory: /home/nukeexplode/Desktop/deemo/src/base
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/nukeexplode/Desktop/root/build/src/base/tests/cmake_install.cmake")
+  include("/home/nukeexplode/Desktop/deemo/build/src/base/tests/cmake_install.cmake")
 
 endif()
 

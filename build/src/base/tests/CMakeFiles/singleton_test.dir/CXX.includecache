@@ -10,23 +10,23 @@
 mutex
 -
 
-/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.cpp
+/home/nukeexplode/Desktop/deemo/src/base/ConfigFileReader.cpp
 ConfigFileReader.h
-/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+/home/nukeexplode/Desktop/deemo/src/base/ConfigFileReader.h
 stdio.h
 -
 string.h
 -
 
-/home/nukeexplode/Desktop/root/src/base/ConfigFileReader.h
+/home/nukeexplode/Desktop/deemo/src/base/ConfigFileReader.h
 map
 -
 string
 -
 
-/home/nukeexplode/Desktop/root/src/base/tests/Singleton_test.cpp
+/home/nukeexplode/Desktop/deemo/src/base/tests/Singleton_test.cpp
 Singleton.h
-/home/nukeexplode/Desktop/root/src/base/tests/Singleton.h
+/home/nukeexplode/Desktop/deemo/src/base/tests/Singleton.h
 iostream
 -
 thread

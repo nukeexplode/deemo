@@ -33,11 +33,11 @@ int MysqlManager::Init() {
     int max_conncnt = std::stoi(str_maxconncnt);
     std::unique_ptr<DatabaseMysql> sp_DBpool = std::make_unique<DatabaseMysql>(dbname.c_str(), host.c_str(), port, username.c_str(), password.c_str(), dbname.c_str(), max_conncnt);
     if (sp_DBpool->Init() != 0) {
-        LOG_ERROR << "init db instance failed: " << dbname;
+        LOG_ERROR << "init db instance failed: " << db_instance;
         return -1;
     }
 
-    m_pool_map[dbname] = std::move(sp_DBpool);
+    m_pool_map[db_instance] = std::move(sp_DBpool);
     return 0;
 }
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nukeexplode/Desktop/root
+CMAKE_SOURCE_DIR = /home/nukeexplode/Desktop/deemo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nukeexplode/Desktop/root/build
+CMAKE_BINARY_DIR = /home/nukeexplode/Desktop/deemo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/nukeexplode/Desktop/root/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/root/build/CMakeFiles /home/nukeexplode/Desktop/root/build/src/base/CMakeFiles/progress.marks
-	cd /home/nukeexplode/Desktop/root/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/root/build/CMakeFiles 0
+	cd /home/nukeexplode/Desktop/deemo/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles /home/nukeexplode/Desktop/deemo/build/src/base/CMakeFiles/progress.marks
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/nukeexplode/Desktop/root/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/clean
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,17 +97,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/nukeexplode/Desktop/root/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/preinstall
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/nukeexplode/Desktop/root/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/preinstall
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/nukeexplode/Desktop/root/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/nukeexplode/Desktop/deemo/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -129,6 +129,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/nukeexplode/Desktop/root/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/nukeexplode/Desktop/deemo/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -9,7 +9,7 @@ QueryResult::QueryResult(MYSQL_RES* result, uint64_t rowCount, uint32_t fieldCou
 
     MYSQL_FIELD* fields = mysql_fetch_fields(m_result);
 
-    std::cout << m_cur_row << std::endl;
+    // std::cout << m_cur_row << std::endl;
     for (uint32_t i = 0; i < fieldCount; i++) {
         m_field_name[i] = fields[i].name;
         m_cur_row[i].setName(fields[i].name);

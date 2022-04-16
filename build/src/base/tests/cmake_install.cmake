@@ -1,4 +1,4 @@
-# Install script for directory: /home/nukeexplode/Desktop/root/src/base/tests
+# Install script for directory: /home/nukeexplode/Desktop/deemo/src/base/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

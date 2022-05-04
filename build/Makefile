@@ -111,43 +111,95 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DatabasePool_test
+# Target rules for targets named register_server
 
 # Build rule for target.
-DatabasePool_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DatabasePool_test
-.PHONY : DatabasePool_test
+register_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 register_server
+.PHONY : register_server
 
 # fast build rule for target.
-DatabasePool_test/fast:
-	$(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/build
-.PHONY : DatabasePool_test/fast
+register_server/fast:
+	$(MAKE) -f src/register_server/CMakeFiles/register_server.dir/build.make src/register_server/CMakeFiles/register_server.dir/build
+.PHONY : register_server/fast
 
 #=============================================================================
-# Target rules for targets named ConfigFileReader_test
+# Target rules for targets named register_proto
 
 # Build rule for target.
-ConfigFileReader_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ConfigFileReader_test
-.PHONY : ConfigFileReader_test
+register_proto: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 register_proto
+.PHONY : register_proto
 
 # fast build rule for target.
-ConfigFileReader_test/fast:
-	$(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build
-.PHONY : ConfigFileReader_test/fast
+register_proto/fast:
+	$(MAKE) -f src/register_server/CMakeFiles/register_proto.dir/build.make src/register_server/CMakeFiles/register_proto.dir/build
+.PHONY : register_proto/fast
 
 #=============================================================================
-# Target rules for targets named singleton_test
+# Target rules for targets named client
 
 # Build rule for target.
-singleton_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 singleton_test
-.PHONY : singleton_test
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
 
 # fast build rule for target.
-singleton_test/fast:
-	$(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/build
-.PHONY : singleton_test/fast
+client/fast:
+	$(MAKE) -f src/client/CMakeFiles/client.dir/build.make src/client/CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+#=============================================================================
+# Target rules for targets named client_proto
+
+# Build rule for target.
+client_proto: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client_proto
+.PHONY : client_proto
+
+# fast build rule for target.
+client_proto/fast:
+	$(MAKE) -f src/client/CMakeFiles/client_proto.dir/build.make src/client/CMakeFiles/client_proto.dir/build
+.PHONY : client_proto/fast
+
+#=============================================================================
+# Target rules for targets named proxy_server
+
+# Build rule for target.
+proxy_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 proxy_server
+.PHONY : proxy_server
+
+# fast build rule for target.
+proxy_server/fast:
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_server.dir/build.make src/proxy_server/CMakeFiles/proxy_server.dir/build
+.PHONY : proxy_server/fast
+
+#=============================================================================
+# Target rules for targets named mysql_pool
+
+# Build rule for target.
+mysql_pool: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mysql_pool
+.PHONY : mysql_pool
+
+# fast build rule for target.
+mysql_pool/fast:
+	$(MAKE) -f src/proxy_server/CMakeFiles/mysql_pool.dir/build.make src/proxy_server/CMakeFiles/mysql_pool.dir/build
+.PHONY : mysql_pool/fast
+
+#=============================================================================
+# Target rules for targets named proxy_proto
+
+# Build rule for target.
+proxy_proto: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 proxy_proto
+.PHONY : proxy_proto
+
+# fast build rule for target.
+proxy_proto/fast:
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_proto.dir/build.make src/proxy_server/CMakeFiles/proxy_proto.dir/build
+.PHONY : proxy_proto/fast
 
 # Help Target
 help:
@@ -157,9 +209,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... DatabasePool_test"
-	@echo "... ConfigFileReader_test"
-	@echo "... singleton_test"
+	@echo "... register_server"
+	@echo "... register_proto"
+	@echo "... client"
+	@echo "... client_proto"
+	@echo "... proxy_server"
+	@echo "... mysql_pool"
+	@echo "... proxy_proto"
 .PHONY : help
 
 

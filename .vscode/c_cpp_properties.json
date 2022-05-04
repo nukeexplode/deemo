@@ -4,7 +4,17 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/base"
+                "${workspaceFolder}/src/base/**",
+                "${workspaceFolder}/src/proxy_server/**",
+                "${workspaceFolder}/src/register_server/**",
+                "${workspaceFolder}/src/base/pb/protocol/**",
+                "${workspaceFolder}/src/register_server/business/**",
+                "${workspaceFolder}/src/base/pb/protocol",
+                "${workspaceFolder}/src/base",
+                "${workspaceFolder}/src/base/client",
+                "${workspaceFolder}/src/register_server",
+                "${workspaceFolder}/src/client",
+                "${workspaceFolder}/src/base/database"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-8",

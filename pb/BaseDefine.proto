@@ -1,0 +1,46 @@
+syntax = "proto3";
+package BaseDefine;
+
+// service id
+enum ServiceID {
+    SID_REGISTER        = 0;
+    SID_LOGIN           = 1;           // for login
+    SID_BUDDY_LIST      = 2;		    // for friend list
+    SID_MSG             = 3;           //
+    SID_GROUP           = 4;           // for group message
+    SID_FILE            = 5;
+    SID_SWITCH_SERVICE  = 6;
+    SID_OTHER           = 7;
+    SID_INTERNAL        = 8;		     
+}
+
+enum RegCmdID {
+    CID_REGISTER_NONE               = 0x0000;
+    CID_REGISTER_REQ_USEREG         = 0x0100;
+    CID_REGISTER_RES_USEREG         = 0x0101;
+}
+
+enum LoginCmdID {
+    CID_LOGIN_NONE                  = 0x0000;
+    CID_LOGIN_REQ_MSGSERVER         = 0x0200; 	//
+    CID_LOGIN_RES_MSGSERVER         = 0x0201;	//
+    CID_LOGIN_REQ_USERLOGIN         = 0x0202;	//
+    CID_LOGIN_RES_USERLOGIN         = 0x0203;	//
+    CID_LOGIN_REQ_LOGINOUT          = 0x0204;	//
+    CID_LOGIN_RES_LOGINOUT          = 0x0205; 	//
+    CID_LOGIN_KICK_USER				= 0x0206; 	//
+    CID_LOGIN_REQ_DEVICETOKEN       = 0x0207;  //
+    CID_LOGIN_RES_DEVICETOKEN       = 0x0208;  //
+    CID_LOGIN_REQ_KICKPCCLIENT      = 0x0209;
+    CID_LOGIN_RES_KICKPCCLIENT      = 0x020A;
+    CID_LOGIN_REQ_PUSH_SHIELD       = 0x020B;	//
+    CID_LOGIN_RES_PUSH_SHIELD       = 0x020C; 	//
+    CID_LOGIN_REQ_QUERY_PUSH_SHIELD = 0x020D; 	//
+    CID_LOGIN_RES_QUERY_PUSH_SHIELD = 0x020E;
+}
+
+enum RegisterResult {
+    REGISTER_SUCCESS = 0;
+    REGISTER_ALREADY_EXIST = 1;
+    REGISTER_OTHER_FAILUER = 2;
+}

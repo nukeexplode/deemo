@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=SERVER
+CMAKE_PROJECT_NAME:STATIC=deemo
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -214,6 +214,24 @@ SERVER_BINARY_DIR:STATIC=/home/nukeexplode/Desktop/deemo/build
 
 //Value Computed by CMake
 SERVER_SOURCE_DIR:STATIC=/home/nukeexplode/Desktop/deemo
+
+//Dependencies for the target
+client_proto_LIB_DEPENDS:STATIC=general;protobuf;general;pthread;
+
+//Value Computed by CMake
+deemo_BINARY_DIR:STATIC=/home/nukeexplode/Desktop/deemo/build
+
+//Value Computed by CMake
+deemo_SOURCE_DIR:STATIC=/home/nukeexplode/Desktop/deemo
+
+//Dependencies for the target
+mysql_pool_LIB_DEPENDS:STATIC=general;mysqlclient;general;muduo_base;general;pthread;
+
+//Dependencies for the target
+proxy_proto_LIB_DEPENDS:STATIC=general;protobuf;general;pthread;
+
+//Dependencies for the target
+register_proto_LIB_DEPENDS:STATIC=general;protobuf;general;pthread;
 
 
 ########################
@@ -320,7 +338,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

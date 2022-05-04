@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmysql_pool.a  CMakeFiles/mysql_pool.dir/__/base/database/DatabaseConn.cpp.o CMakeFiles/mysql_pool.dir/__/base/database/DatabaseMysql.cpp.o CMakeFiles/mysql_pool.dir/__/base/database/Field.cpp.o CMakeFiles/mysql_pool.dir/__/base/database/MysqlManager.cpp.o CMakeFiles/mysql_pool.dir/__/base/database/QueryResult.cpp.o
+/usr/bin/ranlib libmysql_pool.a

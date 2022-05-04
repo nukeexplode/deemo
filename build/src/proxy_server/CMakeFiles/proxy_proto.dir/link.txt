@@ -1,0 +1,2 @@
+/usr/bin/ar qc libproxy_proto.a  CMakeFiles/proxy_proto.dir/__/base/pb/protocol/BaseDefine.pb.cc.o CMakeFiles/proxy_proto.dir/__/base/pb/protocol/User.pb.cc.o
+/usr/bin/ranlib libproxy_proto.a

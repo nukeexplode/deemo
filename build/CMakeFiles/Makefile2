@@ -53,140 +53,277 @@ CMAKE_BINARY_DIR = /home/nukeexplode/Desktop/deemo/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: src/base/all
+all: src/register_server/all
+all: src/client/all
+all: src/proxy_server/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: src/base/preinstall
+preinstall: src/register_server/preinstall
+preinstall: src/client/preinstall
+preinstall: src/proxy_server/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: src/base/clean
+clean: src/register_server/clean
+clean: src/client/clean
+clean: src/proxy_server/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory src/base
+# Directory level rules for directory src/client
 
 # Recursive "all" directory target.
-src/base/all: src/base/tests/all
+src/client/all: src/client/CMakeFiles/client.dir/all
+src/client/all: src/client/CMakeFiles/client_proto.dir/all
 
-.PHONY : src/base/all
+.PHONY : src/client/all
 
 # Recursive "preinstall" directory target.
-src/base/preinstall: src/base/tests/preinstall
+src/client/preinstall:
 
-.PHONY : src/base/preinstall
+.PHONY : src/client/preinstall
 
 # Recursive "clean" directory target.
-src/base/clean: src/base/tests/clean
+src/client/clean: src/client/CMakeFiles/client.dir/clean
+src/client/clean: src/client/CMakeFiles/client_proto.dir/clean
 
-.PHONY : src/base/clean
+.PHONY : src/client/clean
 
 #=============================================================================
-# Directory level rules for directory src/base/tests
+# Directory level rules for directory src/proxy_server
 
 # Recursive "all" directory target.
-src/base/tests/all: src/base/tests/CMakeFiles/DatabasePool_test.dir/all
-src/base/tests/all: src/base/tests/CMakeFiles/ConfigFileReader_test.dir/all
-src/base/tests/all: src/base/tests/CMakeFiles/singleton_test.dir/all
+src/proxy_server/all: src/proxy_server/CMakeFiles/proxy_server.dir/all
+src/proxy_server/all: src/proxy_server/CMakeFiles/mysql_pool.dir/all
+src/proxy_server/all: src/proxy_server/CMakeFiles/proxy_proto.dir/all
 
-.PHONY : src/base/tests/all
+.PHONY : src/proxy_server/all
 
 # Recursive "preinstall" directory target.
-src/base/tests/preinstall:
+src/proxy_server/preinstall:
 
-.PHONY : src/base/tests/preinstall
+.PHONY : src/proxy_server/preinstall
 
 # Recursive "clean" directory target.
-src/base/tests/clean: src/base/tests/CMakeFiles/DatabasePool_test.dir/clean
-src/base/tests/clean: src/base/tests/CMakeFiles/ConfigFileReader_test.dir/clean
-src/base/tests/clean: src/base/tests/CMakeFiles/singleton_test.dir/clean
+src/proxy_server/clean: src/proxy_server/CMakeFiles/proxy_server.dir/clean
+src/proxy_server/clean: src/proxy_server/CMakeFiles/mysql_pool.dir/clean
+src/proxy_server/clean: src/proxy_server/CMakeFiles/proxy_proto.dir/clean
 
-.PHONY : src/base/tests/clean
+.PHONY : src/proxy_server/clean
 
 #=============================================================================
-# Target rules for target src/base/tests/CMakeFiles/DatabasePool_test.dir
+# Directory level rules for directory src/register_server
+
+# Recursive "all" directory target.
+src/register_server/all: src/register_server/CMakeFiles/register_server.dir/all
+src/register_server/all: src/register_server/CMakeFiles/register_proto.dir/all
+
+.PHONY : src/register_server/all
+
+# Recursive "preinstall" directory target.
+src/register_server/preinstall:
+
+.PHONY : src/register_server/preinstall
+
+# Recursive "clean" directory target.
+src/register_server/clean: src/register_server/CMakeFiles/register_server.dir/clean
+src/register_server/clean: src/register_server/CMakeFiles/register_proto.dir/clean
+
+.PHONY : src/register_server/clean
+
+#=============================================================================
+# Target rules for target src/register_server/CMakeFiles/register_server.dir
 
 # All Build rule for target.
-src/base/tests/CMakeFiles/DatabasePool_test.dir/all:
-	$(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/depend
-	$(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=4,5,6,7,8,9,10,11 "Built target DatabasePool_test"
-.PHONY : src/base/tests/CMakeFiles/DatabasePool_test.dir/all
+src/register_server/CMakeFiles/register_server.dir/all: src/register_server/CMakeFiles/register_proto.dir/all
+	$(MAKE) -f src/register_server/CMakeFiles/register_server.dir/build.make src/register_server/CMakeFiles/register_server.dir/depend
+	$(MAKE) -f src/register_server/CMakeFiles/register_server.dir/build.make src/register_server/CMakeFiles/register_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=29,30,31,32,33,34,35,36,37 "Built target register_server"
+.PHONY : src/register_server/CMakeFiles/register_server.dir/all
 
 # Build rule for subdir invocation for target.
-src/base/tests/CMakeFiles/DatabasePool_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/DatabasePool_test.dir/all
+src/register_server/CMakeFiles/register_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 12
+	$(MAKE) -f CMakeFiles/Makefile2 src/register_server/CMakeFiles/register_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
-.PHONY : src/base/tests/CMakeFiles/DatabasePool_test.dir/rule
+.PHONY : src/register_server/CMakeFiles/register_server.dir/rule
 
 # Convenience name for target.
-DatabasePool_test: src/base/tests/CMakeFiles/DatabasePool_test.dir/rule
+register_server: src/register_server/CMakeFiles/register_server.dir/rule
 
-.PHONY : DatabasePool_test
+.PHONY : register_server
 
 # clean rule for target.
-src/base/tests/CMakeFiles/DatabasePool_test.dir/clean:
-	$(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/clean
-.PHONY : src/base/tests/CMakeFiles/DatabasePool_test.dir/clean
+src/register_server/CMakeFiles/register_server.dir/clean:
+	$(MAKE) -f src/register_server/CMakeFiles/register_server.dir/build.make src/register_server/CMakeFiles/register_server.dir/clean
+.PHONY : src/register_server/CMakeFiles/register_server.dir/clean
 
 #=============================================================================
-# Target rules for target src/base/tests/CMakeFiles/ConfigFileReader_test.dir
+# Target rules for target src/register_server/CMakeFiles/register_proto.dir
 
 # All Build rule for target.
-src/base/tests/CMakeFiles/ConfigFileReader_test.dir/all:
-	$(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/depend
-	$(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=1,2,3 "Built target ConfigFileReader_test"
-.PHONY : src/base/tests/CMakeFiles/ConfigFileReader_test.dir/all
+src/register_server/CMakeFiles/register_proto.dir/all:
+	$(MAKE) -f src/register_server/CMakeFiles/register_proto.dir/build.make src/register_server/CMakeFiles/register_proto.dir/depend
+	$(MAKE) -f src/register_server/CMakeFiles/register_proto.dir/build.make src/register_server/CMakeFiles/register_proto.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=26,27,28 "Built target register_proto"
+.PHONY : src/register_server/CMakeFiles/register_proto.dir/all
 
 # Build rule for subdir invocation for target.
-src/base/tests/CMakeFiles/ConfigFileReader_test.dir/rule: cmake_check_build_system
+src/register_server/CMakeFiles/register_proto.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/ConfigFileReader_test.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 src/register_server/CMakeFiles/register_proto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
-.PHONY : src/base/tests/CMakeFiles/ConfigFileReader_test.dir/rule
+.PHONY : src/register_server/CMakeFiles/register_proto.dir/rule
 
 # Convenience name for target.
-ConfigFileReader_test: src/base/tests/CMakeFiles/ConfigFileReader_test.dir/rule
+register_proto: src/register_server/CMakeFiles/register_proto.dir/rule
 
-.PHONY : ConfigFileReader_test
+.PHONY : register_proto
 
 # clean rule for target.
-src/base/tests/CMakeFiles/ConfigFileReader_test.dir/clean:
-	$(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/clean
-.PHONY : src/base/tests/CMakeFiles/ConfigFileReader_test.dir/clean
+src/register_server/CMakeFiles/register_proto.dir/clean:
+	$(MAKE) -f src/register_server/CMakeFiles/register_proto.dir/build.make src/register_server/CMakeFiles/register_proto.dir/clean
+.PHONY : src/register_server/CMakeFiles/register_proto.dir/clean
 
 #=============================================================================
-# Target rules for target src/base/tests/CMakeFiles/singleton_test.dir
+# Target rules for target src/client/CMakeFiles/client.dir
 
 # All Build rule for target.
-src/base/tests/CMakeFiles/singleton_test.dir/all:
-	$(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/depend
-	$(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=12,13,14 "Built target singleton_test"
-.PHONY : src/base/tests/CMakeFiles/singleton_test.dir/all
+src/client/CMakeFiles/client.dir/all: src/client/CMakeFiles/client_proto.dir/all
+	$(MAKE) -f src/client/CMakeFiles/client.dir/build.make src/client/CMakeFiles/client.dir/depend
+	$(MAKE) -f src/client/CMakeFiles/client.dir/build.make src/client/CMakeFiles/client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target client"
+.PHONY : src/client/CMakeFiles/client.dir/all
 
 # Build rule for subdir invocation for target.
-src/base/tests/CMakeFiles/singleton_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/singleton_test.dir/all
+src/client/CMakeFiles/client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 src/client/CMakeFiles/client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
-.PHONY : src/base/tests/CMakeFiles/singleton_test.dir/rule
+.PHONY : src/client/CMakeFiles/client.dir/rule
 
 # Convenience name for target.
-singleton_test: src/base/tests/CMakeFiles/singleton_test.dir/rule
+client: src/client/CMakeFiles/client.dir/rule
 
-.PHONY : singleton_test
+.PHONY : client
 
 # clean rule for target.
-src/base/tests/CMakeFiles/singleton_test.dir/clean:
-	$(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/clean
-.PHONY : src/base/tests/CMakeFiles/singleton_test.dir/clean
+src/client/CMakeFiles/client.dir/clean:
+	$(MAKE) -f src/client/CMakeFiles/client.dir/build.make src/client/CMakeFiles/client.dir/clean
+.PHONY : src/client/CMakeFiles/client.dir/clean
+
+#=============================================================================
+# Target rules for target src/client/CMakeFiles/client_proto.dir
+
+# All Build rule for target.
+src/client/CMakeFiles/client_proto.dir/all:
+	$(MAKE) -f src/client/CMakeFiles/client_proto.dir/build.make src/client/CMakeFiles/client_proto.dir/depend
+	$(MAKE) -f src/client/CMakeFiles/client_proto.dir/build.make src/client/CMakeFiles/client_proto.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=7,8,9 "Built target client_proto"
+.PHONY : src/client/CMakeFiles/client_proto.dir/all
+
+# Build rule for subdir invocation for target.
+src/client/CMakeFiles/client_proto.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 src/client/CMakeFiles/client_proto.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
+.PHONY : src/client/CMakeFiles/client_proto.dir/rule
+
+# Convenience name for target.
+client_proto: src/client/CMakeFiles/client_proto.dir/rule
+
+.PHONY : client_proto
+
+# clean rule for target.
+src/client/CMakeFiles/client_proto.dir/clean:
+	$(MAKE) -f src/client/CMakeFiles/client_proto.dir/build.make src/client/CMakeFiles/client_proto.dir/clean
+.PHONY : src/client/CMakeFiles/client_proto.dir/clean
+
+#=============================================================================
+# Target rules for target src/proxy_server/CMakeFiles/proxy_server.dir
+
+# All Build rule for target.
+src/proxy_server/CMakeFiles/proxy_server.dir/all: src/register_server/CMakeFiles/register_proto.dir/all
+src/proxy_server/CMakeFiles/proxy_server.dir/all: src/proxy_server/CMakeFiles/mysql_pool.dir/all
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_server.dir/build.make src/proxy_server/CMakeFiles/proxy_server.dir/depend
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_server.dir/build.make src/proxy_server/CMakeFiles/proxy_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=19,20,21,22,23,24,25 "Built target proxy_server"
+.PHONY : src/proxy_server/CMakeFiles/proxy_server.dir/all
+
+# Build rule for subdir invocation for target.
+src/proxy_server/CMakeFiles/proxy_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 src/proxy_server/CMakeFiles/proxy_server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
+.PHONY : src/proxy_server/CMakeFiles/proxy_server.dir/rule
+
+# Convenience name for target.
+proxy_server: src/proxy_server/CMakeFiles/proxy_server.dir/rule
+
+.PHONY : proxy_server
+
+# clean rule for target.
+src/proxy_server/CMakeFiles/proxy_server.dir/clean:
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_server.dir/build.make src/proxy_server/CMakeFiles/proxy_server.dir/clean
+.PHONY : src/proxy_server/CMakeFiles/proxy_server.dir/clean
+
+#=============================================================================
+# Target rules for target src/proxy_server/CMakeFiles/mysql_pool.dir
+
+# All Build rule for target.
+src/proxy_server/CMakeFiles/mysql_pool.dir/all:
+	$(MAKE) -f src/proxy_server/CMakeFiles/mysql_pool.dir/build.make src/proxy_server/CMakeFiles/mysql_pool.dir/depend
+	$(MAKE) -f src/proxy_server/CMakeFiles/mysql_pool.dir/build.make src/proxy_server/CMakeFiles/mysql_pool.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=10,11,12,13,14,15 "Built target mysql_pool"
+.PHONY : src/proxy_server/CMakeFiles/mysql_pool.dir/all
+
+# Build rule for subdir invocation for target.
+src/proxy_server/CMakeFiles/mysql_pool.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 src/proxy_server/CMakeFiles/mysql_pool.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
+.PHONY : src/proxy_server/CMakeFiles/mysql_pool.dir/rule
+
+# Convenience name for target.
+mysql_pool: src/proxy_server/CMakeFiles/mysql_pool.dir/rule
+
+.PHONY : mysql_pool
+
+# clean rule for target.
+src/proxy_server/CMakeFiles/mysql_pool.dir/clean:
+	$(MAKE) -f src/proxy_server/CMakeFiles/mysql_pool.dir/build.make src/proxy_server/CMakeFiles/mysql_pool.dir/clean
+.PHONY : src/proxy_server/CMakeFiles/mysql_pool.dir/clean
+
+#=============================================================================
+# Target rules for target src/proxy_server/CMakeFiles/proxy_proto.dir
+
+# All Build rule for target.
+src/proxy_server/CMakeFiles/proxy_proto.dir/all:
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_proto.dir/build.make src/proxy_server/CMakeFiles/proxy_proto.dir/depend
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_proto.dir/build.make src/proxy_server/CMakeFiles/proxy_proto.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nukeexplode/Desktop/deemo/build/CMakeFiles --progress-num=16,17,18 "Built target proxy_proto"
+.PHONY : src/proxy_server/CMakeFiles/proxy_proto.dir/all
+
+# Build rule for subdir invocation for target.
+src/proxy_server/CMakeFiles/proxy_proto.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 src/proxy_server/CMakeFiles/proxy_proto.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nukeexplode/Desktop/deemo/build/CMakeFiles 0
+.PHONY : src/proxy_server/CMakeFiles/proxy_proto.dir/rule
+
+# Convenience name for target.
+proxy_proto: src/proxy_server/CMakeFiles/proxy_proto.dir/rule
+
+.PHONY : proxy_proto
+
+# clean rule for target.
+src/proxy_server/CMakeFiles/proxy_proto.dir/clean:
+	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_proto.dir/build.make src/proxy_server/CMakeFiles/proxy_proto.dir/clean
+.PHONY : src/proxy_server/CMakeFiles/proxy_proto.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -9,7 +9,7 @@ inline void toLowerString(std::string& str)
     {
         if(str[i] >= 'A' && str[i] <= 'Z')
         {
-            str[i] = str[i] + ('a' - 'A');
+            str[i] = static_cast<char>(std::tolower(str[i]));
         }
     }
 }

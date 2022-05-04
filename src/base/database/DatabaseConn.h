@@ -15,7 +15,7 @@ public:
 	bool execute(const char* sql_query);
 	// char* EscapeString(const char* content, uint32_t content_len);
 
-	uint32_t GetInsertId() { return (uint32_t)mysql_insert_id(m_mysql); }
+	uint32_t GetInsertId() { return static_cast<uint32_t>(mysql_insert_id(m_mysql)); }
 
 	// const char* GetPoolName();
 	MYSQL* GetMysql() { return m_mysql; }

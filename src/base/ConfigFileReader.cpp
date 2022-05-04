@@ -145,7 +145,7 @@ char* CConfigFileReader::trimSpace(char* name)
 		end_pos--;
 	}
 
-	int len = (int)(end_pos - start_pos) + 1;
+	int len = static_cast<int>(end_pos - start_pos) + 1;
 	if (len <= 0)
 		return NULL;
 

@@ -1,0 +1,40 @@
+//all about register message
+
+syntax = "proto3";
+package User;
+
+//service id    0x0
+
+message RegReq{
+	//cmd id:		0x0
+	string username = 1;
+	string password = 2;
+}
+
+message RegRsp{
+	//cmd id:		0x1
+	string username = 1;
+	uint32 userid = 2;
+	string password = 3;
+	uint32 result_code = 4;
+}
+
+message LoginReq{
+	//cmd id:		0x2
+	string username = 1;
+	string password = 2;
+}
+
+message LoginRsp{
+	//cmd id:		0x3
+	uint32 result_code = 1;
+}
+
+message LoginoutReq{
+	//cmd id:		0x4
+}
+
+message IMLogoutRsp{
+	//cmd id:		0x5
+	uint32 result_code = 1;
+}

@@ -9,7 +9,7 @@ RedisManager::~RedisManager() {
 }
 
 int RedisManager::Init() {
-    CConfigFileReader config("../../etc/redis.conf");
+    CConfigFileReader config("../etc/redis.conf");
 
     std::string redis_instance = config.getConfigName("instances");
     if (redis_instance.empty()) {

@@ -143,7 +143,7 @@ void ProtobufCodec::onMessage(const TcpConnectionPtr& conn,
     else if (buf->readableBytes() >= implicit_cast<size_t>(len + kHeaderLen))
     {
       ErrorCode errorCode = kNoError;
-      MessagePtr message = parse(buf->peek()+kHeaderLen, len, &errorCode);
+      MessagePtr message = parse(buf->peek() + kHeaderLen, len, &errorCode);
       if (errorCode == kNoError && message)
       {
         messageCallback_(conn, message, receiveTime);
@@ -194,7 +194,7 @@ MessagePtr ProtobufCodec::parse(const char* buf, int len, ErrorCode* error)
       {
         // parse from buffer
         const char* data = buf + kHeaderLen + nameLen;
-        int32_t dataLen = len - nameLen - 2*kHeaderLen;
+        int32_t dataLen = len - nameLen - kHeaderLen;
         if (message->ParseFromArray(data, dataLen))
         {
           *error = kNoError;

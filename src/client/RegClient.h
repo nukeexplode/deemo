@@ -56,6 +56,10 @@ public:
         m_client.disconnect();
     }
 
+    bool isconnect() {
+        return m_isconnected;
+    }
+
     void send(google::protobuf::Message* msg)
     {
         std::unique_lock<std::mutex> lock(m_mutex);
@@ -85,8 +89,10 @@ private:
         std::unique_lock<std::mutex> lock(m_mutex);
         if (conn->connected()) {
             m_conn = conn;
+            m_isconnected = true;
         } else {
             m_conn.reset();
+            m_isconnected = false;
         }
     }
 
@@ -103,4 +109,5 @@ private:
     std::mutex m_mutex;
     ProtobufCodec m_codec;
     ProtobufDispatcher m_dispatcher;
+    bool m_isconnected;
 };

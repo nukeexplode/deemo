@@ -9,7 +9,7 @@ MysqlManager::~MysqlManager() {
 }
 
 int MysqlManager::Init() {
-    CConfigFileReader config("../../etc/database.conf");
+    CConfigFileReader config("../etc/database.conf");
 
     std::string db_instance = config.getConfigName("instances");
     if (db_instance.empty()) {

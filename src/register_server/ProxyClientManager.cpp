@@ -2,6 +2,8 @@
 
 #include "ProxyClient.h"
 
+extern EventLoop g_main_loop;
+
 ProxyClientManager::ProxyClientManager() : 
 rank(0)
 {
@@ -14,7 +16,7 @@ ProxyClientManager::~ProxyClientManager()
 }
 
 int ProxyClientManager::init() {
-    CConfigFileReader config("../../registerserver.conf");
+    CConfigFileReader config("../etc/registerserver.conf");
 
     m_name = config.getConfigName("proxy_name");
     std::string ip = config.getConfigName("proxy_ip");
@@ -23,9 +25,8 @@ int ProxyClientManager::init() {
     m_thread_cnt = std::stoi(config.getConfigName("proxy_threadcnt"));
     InetAddress addr(ip, port);
 
-    EventLoop loop;
-    m_loop = &loop;
-    m_pool.reset(new EventLoopThreadPool(&loop, "proxy client pool"));
+    m_loop = &g_main_loop;
+    m_pool.reset(new EventLoopThreadPool(m_loop, "proxy client pool"));
     m_pool->setThreadNum(m_thread_cnt);
     m_pool->start();
 

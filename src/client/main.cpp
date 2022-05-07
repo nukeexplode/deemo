@@ -16,22 +16,54 @@ int main(int argc, char* argv[])
 {
     LOG_INFO << "pid = " << getpid();
     EventLoopThread loopThread;
-    InetAddress serverAddr("127.0.0.1", 20000);
+    InetAddress serverAddr("127.0.0.1", 20001);
+    muduo::Logger::setLogLevel(muduo::Logger::LogLevel::DEBUG);
 
     RegClient client(loopThread.startLoop(), serverAddr);
     client.connect();
+    while (!client.isconnect());
+
     std::string line;
     for (;;) {
-        std::string username, password;
-        std::cout << "username: ";
-        std::cin >> username; 
-        std::cout << "password: ";
-        std::cin >> password;
+        std::string username = "nukeexplode", password = "TKQ19990315";
+        // std::cout << "username: ";
+        // std::cin >> username; 
+        // std::cout << "password: ";
+        // std::cin >> password;
 
         User::RegReq req;
         req.set_username(username);
         req.set_password(password);
         client.send(&req);
     }
+    sleep(5);
     client.disconnect();
 }
+
+// int main(int argc, char* argv[])
+// {
+//     LOG_INFO << "pid = " << getpid();
+//     EventLoopThread loopThread;
+//     InetAddress serverAddr("127.0.0.1", 20001);
+//     muduo::Logger::setLogLevel(muduo::Logger::LogLevel::TRACE);
+
+//     EventLoop g_main_loop;
+//     RegClient client(&g_main_loop, serverAddr);
+//     client.connect();
+
+//     std::string line;
+//     // for (;;) {
+//         std::string username = "nukeexplode", password = "TKQ19990315";
+//         // std::cout << "username: ";
+//         // std::cin >> username; 
+//         // std::cout << "password: ";
+//         // std::cin >> password;
+
+//         User::RegReq req;
+//         req.set_username(username);
+//         req.set_password(password);
+//         client.send(&req);
+//     // }
+
+//     g_main_loop.loop();
+// }

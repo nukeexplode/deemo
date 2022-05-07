@@ -63,7 +63,7 @@ void ProxySession::checkHeartbeat(const std::shared_ptr<TcpConnection>& conn) {
 void ProxySession::handleRegister(const std::shared_ptr<TcpConnection>& conn, const std::shared_ptr<User::RegReq>& req, Timestamp t) {
     std::shared_ptr<DatabaseConn> pDBconn = Singleton<MysqlManager>::Instance().GetDBConn("deemo_master");
     char query[255];
-    snprintf(query, 255, "insert into t_user('f_user_id', 'f_user_name', 'f_user_password', 'f_user_signture', 'f_owner_id') values(null, '%s', '%s', '%s', 0", 
+    snprintf(query, 255, "insert into t_user(f_username, f_password, f_signature) values('%s', '%s', '%s')", 
         req->username().c_str(), req->password().c_str(), "这个人太懒了什么都没留下");
 
     User::RegRsp rsp;

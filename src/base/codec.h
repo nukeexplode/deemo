@@ -1,6 +1,7 @@
 #pragma once
 #include "muduo/net/Buffer.h"
 #include "muduo/net/TcpConnection.h"
+#include <muduo/base/Logging.h>
 
 #include <google/protobuf/message.h>
 

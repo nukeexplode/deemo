@@ -10,6 +10,8 @@ void ProxyClient::handleRegister(const TcpConnectionPtr& conn, const std::shared
 
     std::shared_ptr<RegSession> sp_regsession;
     std::string username = rsp->username();
-    Singleton<RegServer>::Instance().getSessionsByUsername(sp_regsession, username);
+    if (Singleton<RegServer>::Instance().getSessionsByUsername(sp_regsession, username) == false) {
+        LOG_ERROR << "no session named " << username;
+    }
     sp_regsession->send(rsp.get());
 }

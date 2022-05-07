@@ -31,7 +31,7 @@ public:
 
     bool init(const char* ip, uint16_t port, EventLoop* loop);
 
-    bool getSessionsByUsername(std::shared_ptr<RegSession> sessions, std::string& name);
+    bool getSessionsByUsername(std::shared_ptr<RegSession>& sessions, std::string& name);
 
 private:
     void onConnected(const std::shared_ptr<TcpConnection>& conn);

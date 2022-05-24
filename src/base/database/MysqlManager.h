@@ -21,5 +21,6 @@ public:
 	void RelDBConn(DatabaseConn* pConn);
 
 private:
+	//FIXME use ConcurrentHashMap
 	std::map<std::string, std::unique_ptr<DatabaseMysql>> m_pool_map;
 };

@@ -11,9 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
-  "../src/client/CMakeLists.txt"
-  "../src/proxy_server/CMakeLists.txt"
-  "../src/register_server/CMakeLists.txt"
+  "../src/base/tests/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -44,18 +42,14 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/register_server/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/client/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/proxy_server/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/base/tests/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/register_server/CMakeFiles/register_server.dir/DependInfo.cmake"
-  "src/register_server/CMakeFiles/register_proto.dir/DependInfo.cmake"
-  "src/client/CMakeFiles/client.dir/DependInfo.cmake"
-  "src/client/CMakeFiles/client_proto.dir/DependInfo.cmake"
-  "src/proxy_server/CMakeFiles/proxy_server.dir/DependInfo.cmake"
-  "src/proxy_server/CMakeFiles/mysql_pool.dir/DependInfo.cmake"
-  "src/proxy_server/CMakeFiles/proxy_proto.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/RedisPool_test.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/DatabasePool_test.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/ConfigFileReader_test.dir/DependInfo.cmake"
+  "src/base/tests/CMakeFiles/singleton_test.dir/DependInfo.cmake"
   )

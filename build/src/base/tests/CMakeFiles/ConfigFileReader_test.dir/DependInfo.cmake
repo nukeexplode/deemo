@@ -13,6 +13,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src/base"
   "../src/base/database"
+  "../src/base/redis"
   )
 
 # Targets to which this target links.

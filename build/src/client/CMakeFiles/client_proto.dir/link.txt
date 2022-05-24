@@ -1,2 +1,0 @@
-/usr/bin/ar qc libclient_proto.a  CMakeFiles/client_proto.dir/__/base/pb/protocol/BaseDefine.pb.cc.o CMakeFiles/client_proto.dir/__/base/pb/protocol/User.pb.cc.o
-/usr/bin/ranlib libclient_proto.a

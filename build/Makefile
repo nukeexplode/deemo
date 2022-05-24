@@ -111,95 +111,69 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named register_server
+# Target rules for targets named ConcurrentHashMap_test
 
 # Build rule for target.
-register_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 register_server
-.PHONY : register_server
+ConcurrentHashMap_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ConcurrentHashMap_test
+.PHONY : ConcurrentHashMap_test
 
 # fast build rule for target.
-register_server/fast:
-	$(MAKE) -f src/register_server/CMakeFiles/register_server.dir/build.make src/register_server/CMakeFiles/register_server.dir/build
-.PHONY : register_server/fast
+ConcurrentHashMap_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build.make src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build
+.PHONY : ConcurrentHashMap_test/fast
 
 #=============================================================================
-# Target rules for targets named register_proto
+# Target rules for targets named RedisPool_test
 
 # Build rule for target.
-register_proto: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 register_proto
-.PHONY : register_proto
+RedisPool_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 RedisPool_test
+.PHONY : RedisPool_test
 
 # fast build rule for target.
-register_proto/fast:
-	$(MAKE) -f src/register_server/CMakeFiles/register_proto.dir/build.make src/register_server/CMakeFiles/register_proto.dir/build
-.PHONY : register_proto/fast
+RedisPool_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/build
+.PHONY : RedisPool_test/fast
 
 #=============================================================================
-# Target rules for targets named client
+# Target rules for targets named DatabasePool_test
 
 # Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
+DatabasePool_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DatabasePool_test
+.PHONY : DatabasePool_test
 
 # fast build rule for target.
-client/fast:
-	$(MAKE) -f src/client/CMakeFiles/client.dir/build.make src/client/CMakeFiles/client.dir/build
-.PHONY : client/fast
+DatabasePool_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/build
+.PHONY : DatabasePool_test/fast
 
 #=============================================================================
-# Target rules for targets named client_proto
+# Target rules for targets named ConfigFileReader_test
 
 # Build rule for target.
-client_proto: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client_proto
-.PHONY : client_proto
+ConfigFileReader_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ConfigFileReader_test
+.PHONY : ConfigFileReader_test
 
 # fast build rule for target.
-client_proto/fast:
-	$(MAKE) -f src/client/CMakeFiles/client_proto.dir/build.make src/client/CMakeFiles/client_proto.dir/build
-.PHONY : client_proto/fast
+ConfigFileReader_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build
+.PHONY : ConfigFileReader_test/fast
 
 #=============================================================================
-# Target rules for targets named proxy_server
+# Target rules for targets named singleton_test
 
 # Build rule for target.
-proxy_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 proxy_server
-.PHONY : proxy_server
+singleton_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 singleton_test
+.PHONY : singleton_test
 
 # fast build rule for target.
-proxy_server/fast:
-	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_server.dir/build.make src/proxy_server/CMakeFiles/proxy_server.dir/build
-.PHONY : proxy_server/fast
-
-#=============================================================================
-# Target rules for targets named mysql_pool
-
-# Build rule for target.
-mysql_pool: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mysql_pool
-.PHONY : mysql_pool
-
-# fast build rule for target.
-mysql_pool/fast:
-	$(MAKE) -f src/proxy_server/CMakeFiles/mysql_pool.dir/build.make src/proxy_server/CMakeFiles/mysql_pool.dir/build
-.PHONY : mysql_pool/fast
-
-#=============================================================================
-# Target rules for targets named proxy_proto
-
-# Build rule for target.
-proxy_proto: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 proxy_proto
-.PHONY : proxy_proto
-
-# fast build rule for target.
-proxy_proto/fast:
-	$(MAKE) -f src/proxy_server/CMakeFiles/proxy_proto.dir/build.make src/proxy_server/CMakeFiles/proxy_proto.dir/build
-.PHONY : proxy_proto/fast
+singleton_test/fast:
+	$(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/build
+.PHONY : singleton_test/fast
 
 # Help Target
 help:
@@ -209,13 +183,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... register_server"
-	@echo "... register_proto"
-	@echo "... client"
-	@echo "... client_proto"
-	@echo "... proxy_server"
-	@echo "... mysql_pool"
-	@echo "... proxy_proto"
+	@echo "... ConcurrentHashMap_test"
+	@echo "... RedisPool_test"
+	@echo "... DatabasePool_test"
+	@echo "... ConfigFileReader_test"
+	@echo "... singleton_test"
 .PHONY : help
 
 

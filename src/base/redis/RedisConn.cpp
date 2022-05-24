@@ -1,6 +1,8 @@
 #include "RedisConn.h"
 
-RedisConn::RedisConn(std::std::string& host, int port, int db_num)
+#include <muduo/base/Logging.h>
+
+RedisConn::RedisConn(std::string& host, int port, int db_num)
 {
     m_host = host;
     m_port = port;
@@ -28,7 +30,7 @@ int RedisConn::Init()
 	}
 
 	// 4s 尝试重连一次
-	uint64_t cur_time = (uint64_t)time(NULL);
+	uint64_t cur_time = static_cast<uint64_t> (time(NULL));
 	if (cur_time < m_last_connect_time + 4) {
 		return 0;
 	}
@@ -55,7 +57,7 @@ int RedisConn::Init()
 	}
 
 	redisReply* reply = NULL;
-	reply = (redisReply *)redisCommand(m_pContext, "SELECT %d", m_db_num);
+	reply = static_cast<redisReply*>(redisCommand(m_pContext, "SELECT %d", m_db_num));
 	if (reply && (reply->type == REDIS_REPLY_STATUS) && (strncmp(reply->str, "OK", 2) == 0)) {
 		freeReplyObject(reply);
 		return 0;
@@ -75,9 +77,11 @@ std::string RedisConn::get(std::string key)
 		return value;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "GET %s", key.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "GET %s", key.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return value;
@@ -99,9 +103,11 @@ std::string RedisConn::setex(std::string key, int timeout, std::string value)
 		return ret_value;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "SETEX %s %d %s", key.c_str(), timeout, value.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "SETEX %s %d %s", key.c_str(), timeout, value.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return ret_value;
@@ -120,9 +126,11 @@ std::string RedisConn::set(std::string key, std::string &value)
         return ret_value;
     }
     
-    redisReply* reply = (redisReply *)redisCommand(m_pContext, "SET %s %s", key.c_str(), value.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "SET %s %s", key.c_str(), value.c_str()));
     if (!reply) {
-        sprintf("redisCommand failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         m_pContext = NULL;
         return ret_value;
@@ -163,9 +171,11 @@ bool RedisConn::mget(const std::vector<std::string>& keys, std::map<std::string,
         return false;
     }
     strKey = "MGET " + strKey;
-    redisReply* reply = (redisReply*) redisCommand(m_pContext, strKey.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, strKey.c_str()));
     if (!reply) {
-        sprintf("redisCommand failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         m_pContext = NULL;
         return false;
@@ -190,10 +200,12 @@ bool RedisConn::isExists(std::string &key)
         return false;
     }
     
-    redisReply* reply = (redisReply*) redisCommand(m_pContext, "EXISTS %s", key.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "EXISTS %s", key.c_str()));
     if(!reply)
     {
-        sprintf("redisCommand failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         return false; 
     }
@@ -215,10 +227,12 @@ bool RedisConn::hExists(std::string key, std::string field)
         return false;
     }
     
-    redisReply* reply = (redisReply*) redisCommand(m_pContext, "HEXISTS %s %s", key.c_str(),field.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HEXISTS %s %s", key.c_str(),field.c_str()));
     if(!reply)
     {
-        sprintf("redisCommand failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         return false;
     }
@@ -240,9 +254,11 @@ long RedisConn::hdel(std::string key, std::string field)
 		return 0;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "HDEL %s %s", key.c_str(), field.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HDEL %s %s", key.c_str(), field.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return 0;
@@ -260,15 +276,17 @@ std::string RedisConn::hget(std::string key, std::string field)
 		return ret_value;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "HGET %s %s", key.c_str(), field.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HGET %s %s", key.c_str(), field.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return ret_value;
 	}
 
-	if (reply->type == REDIS_REPLY_std::string) {
+	if (reply->type == REDIS_REPLY_STRING) {
 		ret_value.append(reply->str, reply->len);
 	}
 
@@ -282,9 +300,11 @@ bool RedisConn::hgetAll(std::string key, std::map<std::string, std::string>& ret
 		return false;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "HGETALL %s", key.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HGETALL %s", key.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return false;
@@ -311,9 +331,11 @@ long RedisConn::hset(std::string key, std::string field, std::string value)
 		return -1;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "HSET %s %s %s", key.c_str(), field.c_str(), value.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HSET %s %s %s", key.c_str(), field.c_str(), value.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return -1;
@@ -330,9 +352,11 @@ long RedisConn::hincrBy(std::string key, std::string field, long value)
 		return -1;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "HINCRBY %s %s %ld", key.c_str(), field.c_str(), value);
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "HINCRBY %s %s %ld", key.c_str(), field.c_str(), value));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return -1;
@@ -350,10 +374,12 @@ long RedisConn::incrBy(std::string key, long value)
         return -1;
     }
     
-    redisReply* reply = (redisReply*)redisCommand(m_pContext, "INCRBY %s %ld", key.c_str(), value);
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "INCRBY %s %ld", key.c_str(), value));
     if(!reply)
     {
-        sprintf("redis Command failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         m_pContext = NULL;
         return -1;
@@ -371,7 +397,7 @@ std::string RedisConn::hmset(std::string key, std::map<std::string, std::string>
 		return ret_value;
 	}
 
-	int argc = hash.size() * 2 + 2;
+	int argc = static_cast<int>(hash.size()) * 2 + 2;
 	std::unique_ptr<const char* []> argv = std::make_unique<const char* []>(argc);
 	if (!argv) {
 		return ret_value;
@@ -385,9 +411,11 @@ std::string RedisConn::hmset(std::string key, std::map<std::string, std::string>
 		argv[i++] = it->second.c_str();
 	}
 
-	redisReply* reply = (redisReply *)redisCommandArgv(m_pContext, argc, argv, NULL);
+	redisReply* reply = static_cast<redisReply*>(redisCommandArgv(m_pContext, argc, argv.get(), NULL));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 
 		redisFree(m_pContext);
 		m_pContext = NULL;
@@ -406,7 +434,7 @@ bool RedisConn::hmget(std::string key, std::list<std::string>& fields, std::list
 		return false;
 	}
 
-	int argc = fields.size() + 2;
+	int argc = static_cast<int>(fields.size()) + 2;
 	std::unique_ptr<const char* []> argv = std::make_unique<const char* []>(argc);
 	if (!argv) {
 		return false;
@@ -419,9 +447,11 @@ bool RedisConn::hmget(std::string key, std::list<std::string>& fields, std::list
 		argv[i++] = it->c_str();
 	}
 
-	redisReply* reply = (redisReply *)redisCommandArgv(m_pContext, argc, (const char**)argv, NULL);
+	redisReply* reply = static_cast<redisReply*>(redisCommandArgv(m_pContext, argc, argv.get(), NULL));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 
 		redisFree(m_pContext);
 		m_pContext = NULL;
@@ -430,8 +460,8 @@ bool RedisConn::hmget(std::string key, std::list<std::string>& fields, std::list
 	}
 
 	if (reply->type == REDIS_REPLY_ARRAY) {
-		for (size_t i = 0; i < reply->elements; i++) {
-			redisReply* value_reply = reply->element[i];
+		for (size_t j = 0; j < reply->elements; j++) {
+			redisReply* value_reply = reply->element[j];
 			std::string value(value_reply->str, value_reply->len);
 			ret_value.push_back(value);
 		}
@@ -448,10 +478,12 @@ long RedisConn::incr(std::string key)
         return -1;
     }
     
-    redisReply* reply = (redisReply*)redisCommand(m_pContext, "INCR %s", key.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "INCR %s", key.c_str()));
     if(!reply)
     {
-        sprintf("redis Command failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         m_pContext = NULL;
         return -1;
@@ -468,10 +500,12 @@ long RedisConn::decr(std::string key)
         return -1;
     }
     
-    redisReply* reply = (redisReply*)redisCommand(m_pContext, "DECR %s", key.c_str());
+    redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "DECR %s", key.c_str()));
     if(!reply)
     {
-        sprintf("redis Command failed:%s", m_pContext->errstr);
+        char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
         redisFree(m_pContext);
         m_pContext = NULL;
         return -1;
@@ -487,9 +521,11 @@ long RedisConn::lpush(std::string key, std::string value)
 		return -1;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "LPUSH %s %s", key.c_str(), value.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "LPUSH %s %s", key.c_str(), value.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return -1;
@@ -506,9 +542,11 @@ long RedisConn::rpush(std::string key, std::string value)
 		return -1;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "RPUSH %s %s", key.c_str(), value.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "RPUSH %s %s", key.c_str(), value.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return -1;
@@ -525,9 +563,11 @@ long RedisConn::llen(std::string key)
 		return -1;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "LLEN %s", key.c_str());
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "LLEN %s", key.c_str()));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return -1;
@@ -544,9 +584,11 @@ bool RedisConn::lrange(std::string key, long start, long end, std::list<std::str
 		return false;
 	}
 
-	redisReply* reply = (redisReply *)redisCommand(m_pContext, "LRANGE %s %d %d", key.c_str(), start, end);
+	redisReply* reply = static_cast<redisReply*>(redisCommand(m_pContext, "LRANGE %s %d %d", key.c_str(), start, end));
 	if (!reply) {
-		sprintf("redisCommand failed:%s", m_pContext->errstr);
+		char log[255];
+		sprintf(log, "redisCommand failed:%s", m_pContext->errstr);
+		LOG_ERROR << log;
 		redisFree(m_pContext);
 		m_pContext = NULL;
 		return false;

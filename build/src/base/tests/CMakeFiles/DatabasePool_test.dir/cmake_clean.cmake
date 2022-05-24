@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../../bin/DatabasePool_test"
-  "../../../bin/DatabasePool_test.pdb"
+  "../../../../bin/DatabasePool_test"
+  "../../../../bin/DatabasePool_test.pdb"
   "CMakeFiles/DatabasePool_test.dir/DatabasePool_test.cpp.o"
   "CMakeFiles/DatabasePool_test.dir/__/ConfigFileReader.cpp.o"
   "CMakeFiles/DatabasePool_test.dir/__/database/DatabaseConn.cpp.o"

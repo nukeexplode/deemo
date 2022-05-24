@@ -3,6 +3,8 @@
 syntax = "proto3";
 package User;
 
+import "BaseDefine.proto";
+
 //service id    0x0
 
 message RegReq{
@@ -16,18 +18,22 @@ message RegRsp{
 	string username = 1;
 	uint32 userid = 2;
 	string password = 3;
-	uint32 result_code = 4;
+	BaseDefine.ResultType result_code = 4;
 }
 
 message LoginReq{
 	//cmd id:		0x2
-	string username = 1;
+	uint32 userid = 1;
 	string password = 2;
+	BaseDefine.ClientType client_type = 3;
 }
 
 message LoginRsp{
 	//cmd id:		0x3
-	uint32 result_code = 1;
+	uint32 server_time = 1;
+	string result_string = 3;
+	BaseDefine.UserInfo userinfo = 4;
+	BaseDefine.ResultType result_code = 2;
 }
 
 message LoginoutReq{
@@ -37,4 +43,11 @@ message LoginoutReq{
 message IMLogoutRsp{
 	//cmd id:		0x5
 	uint32 result_code = 1;
+}
+
+message KickUser {
+	uint32 user_id = 1;
+    BaseDefine.ClientType client_type = 2;
+	BaseDefine.ResultType result_code = 3;
+    string kick_result_string = 4;
 }

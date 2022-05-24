@@ -1,0 +1,23 @@
+syntax = "proto3";
+package Msg2Route;
+
+import "BaseDefine.proto";
+
+message LoginReq {
+    uint32 user_id = 2;
+    string password = 3;
+    uint32 session_id = 1;
+}
+
+message LoginRsp {
+    uint32 user_id = 1;
+    uint32 client_type = 2;
+    string server_name = 3;
+}
+
+//only use in session not route server
+message KickUser {
+    uint32 user_id = 1;
+    BaseDefine.ClientType client_type = 2;
+    string kick_result_string = 3;
+}

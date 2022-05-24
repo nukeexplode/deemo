@@ -1,46 +1,113 @@
 syntax = "proto3";
 package BaseDefine;
 
-// service id
-enum ServiceID {
-    SID_REGISTER        = 0;
-    SID_LOGIN           = 1;           // for login
-    SID_BUDDY_LIST      = 2;		    // for friend list
-    SID_MSG             = 3;           //
-    SID_GROUP           = 4;           // for group message
-    SID_FILE            = 5;
-    SID_SWITCH_SERVICE  = 6;
-    SID_OTHER           = 7;
-    SID_INTERNAL        = 8;		     
+// // service id
+// enum ServiceID {
+//     SID_REGISTER        = 0;
+//     SID_LOGIN           = 1;           // for login
+//     SID_BUDDY_LIST      = 2;		    // for friend list
+//     SID_MSG             = 3;           //
+//     SID_GROUP           = 4;           // for group message
+//     SID_FILE            = 5;
+//     SID_SWITCH_SERVICE  = 6;
+//     SID_OTHER           = 7;
+//     SID_INTERNAL        = 8;		     
+// }
+
+// enum RegCmdID {
+//     CID_REGISTER_NONE               = 0x0000;
+//     CID_REGISTER_REQ_USEREG         = 0x0100;
+//     CID_REGISTER_RES_USEREG         = 0x0101;
+// }
+
+// enum LoginCmdID {
+//     CID_LOGIN_NONE                  = 0x0000;
+//     CID_LOGIN_REQ_MSGSERVER         = 0x0200; 	//
+//     CID_LOGIN_RES_MSGSERVER         = 0x0201;	//
+//     CID_LOGIN_REQ_USERLOGIN         = 0x0202;	//
+//     CID_LOGIN_RES_USERLOGIN         = 0x0203;	//
+//     CID_LOGIN_REQ_LOGINOUT          = 0x0204;	//
+//     CID_LOGIN_RES_LOGINOUT          = 0x0205; 	//
+//     CID_LOGIN_KICK_USER				= 0x0206; 	//
+//     CID_LOGIN_REQ_DEVICETOKEN       = 0x0207;  //
+//     CID_LOGIN_RES_DEVICETOKEN       = 0x0208;  //
+//     CID_LOGIN_REQ_KICKPCCLIENT      = 0x0209;
+//     CID_LOGIN_RES_KICKPCCLIENT      = 0x020A;
+//     CID_LOGIN_REQ_PUSH_SHIELD       = 0x020B;	//
+//     CID_LOGIN_RES_PUSH_SHIELD       = 0x020C; 	//
+//     CID_LOGIN_REQ_QUERY_PUSH_SHIELD = 0x020D; 	//
+//     CID_LOGIN_RES_QUERY_PUSH_SHIELD = 0x020E;
+// }
+
+enum ResultType {
+    REGISTER_SUCCESS = 0x0;
+    REGISTER_ALREADY_EXIST = 0x1;
+    REGISTER_OTHER_FAILUER = 0x2;
+
+    LOGIN_SUCCESS = 0x10;
+    LOGIN_PASSWORD_ERROR = 0x11;
+    LOGIN_NO_SUCH_USER = 0x12;
+    LOGIN_TOO_MANY_PASSWORD_ERROR = 0x13;
+    LOGIN_KICK_USER = 0x14;
+
+    //server failure
+    SERVER_NO_PROXY_SERVER = 0xFFF0;
 }
 
-enum RegCmdID {
-    CID_REGISTER_NONE               = 0x0000;
-    CID_REGISTER_REQ_USEREG         = 0x0100;
-    CID_REGISTER_RES_USEREG         = 0x0101;
+// enum RegisterResult {
+//     REGISTER_SUCCESS = 0;
+//     REGISTER_ALREADY_EXIST = 1;
+//     REGISTER_OTHER_FAILUER = 2;
+// }
+
+// enum LoginResult {
+
+// }
+
+enum MsgServerResultType{
+	REFUSE_REASON_NONE				= 0;
+	REFUSE_REASON_NO_MSG_SERVER		= 1;
+	REFUSE_REASON_MSG_SERVER_FULL 	= 2;
+	REFUSE_REASON_NO_DB_SERVER		= 3;
+	REFUSE_REASON_NO_LOGIN_SERVER	= 4;
+	REFUSE_REASON_NO_ROUTE_SERVER	= 5;
+	REFUSE_REASON_DB_VALIDATE_FAILED = 6;
+	// REFUSE_REASON_VERSION_TOO_OLD	= 7;
 }
 
-enum LoginCmdID {
-    CID_LOGIN_NONE                  = 0x0000;
-    CID_LOGIN_REQ_MSGSERVER         = 0x0200; 	//
-    CID_LOGIN_RES_MSGSERVER         = 0x0201;	//
-    CID_LOGIN_REQ_USERLOGIN         = 0x0202;	//
-    CID_LOGIN_RES_USERLOGIN         = 0x0203;	//
-    CID_LOGIN_REQ_LOGINOUT          = 0x0204;	//
-    CID_LOGIN_RES_LOGINOUT          = 0x0205; 	//
-    CID_LOGIN_KICK_USER				= 0x0206; 	//
-    CID_LOGIN_REQ_DEVICETOKEN       = 0x0207;  //
-    CID_LOGIN_RES_DEVICETOKEN       = 0x0208;  //
-    CID_LOGIN_REQ_KICKPCCLIENT      = 0x0209;
-    CID_LOGIN_RES_KICKPCCLIENT      = 0x020A;
-    CID_LOGIN_REQ_PUSH_SHIELD       = 0x020B;	//
-    CID_LOGIN_RES_PUSH_SHIELD       = 0x020C; 	//
-    CID_LOGIN_REQ_QUERY_PUSH_SHIELD = 0x020D; 	//
-    CID_LOGIN_RES_QUERY_PUSH_SHIELD = 0x020E;
+enum ProxyServerResultType{
+	PROXYXERVER_NONE				            = 0;
+	PROXYSERVER_TOO_MANY_PASSWORD_ERROR		    = 1;
+	PROXYSERVER_PASSWORD_ERROR 	                = 2;
+	// REFUSE_REASON_NO_DB_SERVER		            = 3;
+	// REFUSE_REASON_NO_LOGIN_SERVER	            = 4;
+	// REFUSE_REASON_NO_ROUTE_SERVER	            = 5;
+	// REFUSE_REASON_DB_VALIDATE_FAILED            = 6;
+	// REFUSE_REASON_VERSION_TOO_OLD	= 7;
 }
 
-enum RegisterResult {
-    REGISTER_SUCCESS = 0;
-    REGISTER_ALREADY_EXIST = 1;
-    REGISTER_OTHER_FAILUER = 2;
+enum UserOperation {
+    FRIEND_OPERATOIN_ADD = 0;
+    FRIEND_OPERATION_DELETE = 1;
+}
+
+enum ClientType{
+	CLIENT_TYPE_WINDOWS     = 0x00;
+    CLIENT_TYPE_MAC         = 0x01;
+    CLIENT_TYPE_IOS         = 0x02;
+    CLIENT_TYPE_ANDROID     = 0x03;
+}
+
+message UserInfo {
+    uint32 user_id = 1;
+    string user_name = 2;
+    BaseDefine.ClientType client_type = 3;
+    string signature = 4;
+    repeated BaseDefine.FriendList friend_list = 5;
+}
+
+message FriendList {
+    uint32  friendid = 1;
+    string  markname = 2;
+    string  teamname = 3;
 }

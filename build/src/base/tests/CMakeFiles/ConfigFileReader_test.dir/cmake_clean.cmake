@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../../bin/ConfigFileReader_test"
-  "../../../bin/ConfigFileReader_test.pdb"
+  "../../../../bin/ConfigFileReader_test"
+  "../../../../bin/ConfigFileReader_test.pdb"
   "CMakeFiles/ConfigFileReader_test.dir/ConfigFileReader_test.cpp.o"
   "CMakeFiles/ConfigFileReader_test.dir/__/ConfigFileReader.cpp.o"
 )

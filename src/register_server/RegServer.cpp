@@ -23,7 +23,7 @@ bool RegServer::init(const char* ip, uint16_t port, EventLoop* loop) {
 void RegServer::onConnected(const std::shared_ptr<TcpConnection>& conn) {
     if (conn->connected()) {
         char log[255];
-        sprintf(log, "msgserver connected : %s", conn->peerAddress().toIpPort().c_str());
+        sprintf(log, "reg server connected : %s", conn->peerAddress().toIpPort().c_str());
         LOG_DEBUG << log;
 
         std::string session_name = "msgserver:" + conn->peerAddress().toIpPort();

@@ -26,9 +26,11 @@
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/inlined_string_field.h>
 #include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #define PROTOBUF_INTERNAL_EXPORT_protobuf_BaseDefine_2eproto 
 
@@ -37,7 +39,7 @@ namespace protobuf_BaseDefine_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[1];
+  static const ::google::protobuf::internal::ParseTable schema[2];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -45,119 +47,427 @@ struct TableStruct {
 void AddDescriptors();
 }  // namespace protobuf_BaseDefine_2eproto
 namespace BaseDefine {
+class FriendList;
+class FriendListDefaultTypeInternal;
+extern FriendListDefaultTypeInternal _FriendList_default_instance_;
+class UserInfo;
+class UserInfoDefaultTypeInternal;
+extern UserInfoDefaultTypeInternal _UserInfo_default_instance_;
 }  // namespace BaseDefine
+namespace google {
+namespace protobuf {
+template<> ::BaseDefine::FriendList* Arena::CreateMaybeMessage<::BaseDefine::FriendList>(Arena*);
+template<> ::BaseDefine::UserInfo* Arena::CreateMaybeMessage<::BaseDefine::UserInfo>(Arena*);
+}  // namespace protobuf
+}  // namespace google
 namespace BaseDefine {
 
-enum ServiceID {
-  SID_REGISTER = 0,
-  SID_LOGIN = 1,
-  SID_BUDDY_LIST = 2,
-  SID_MSG = 3,
-  SID_GROUP = 4,
-  SID_FILE = 5,
-  SID_SWITCH_SERVICE = 6,
-  SID_OTHER = 7,
-  SID_INTERNAL = 8,
-  ServiceID_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  ServiceID_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool ServiceID_IsValid(int value);
-const ServiceID ServiceID_MIN = SID_REGISTER;
-const ServiceID ServiceID_MAX = SID_INTERNAL;
-const int ServiceID_ARRAYSIZE = ServiceID_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* ServiceID_descriptor();
-inline const ::std::string& ServiceID_Name(ServiceID value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    ServiceID_descriptor(), value);
-}
-inline bool ServiceID_Parse(
-    const ::std::string& name, ServiceID* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<ServiceID>(
-    ServiceID_descriptor(), name, value);
-}
-enum RegCmdID {
-  CID_REGISTER_NONE = 0,
-  CID_REGISTER_REQ_USEREG = 256,
-  CID_REGISTER_RES_USEREG = 257,
-  RegCmdID_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  RegCmdID_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool RegCmdID_IsValid(int value);
-const RegCmdID RegCmdID_MIN = CID_REGISTER_NONE;
-const RegCmdID RegCmdID_MAX = CID_REGISTER_RES_USEREG;
-const int RegCmdID_ARRAYSIZE = RegCmdID_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* RegCmdID_descriptor();
-inline const ::std::string& RegCmdID_Name(RegCmdID value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    RegCmdID_descriptor(), value);
-}
-inline bool RegCmdID_Parse(
-    const ::std::string& name, RegCmdID* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RegCmdID>(
-    RegCmdID_descriptor(), name, value);
-}
-enum LoginCmdID {
-  CID_LOGIN_NONE = 0,
-  CID_LOGIN_REQ_MSGSERVER = 512,
-  CID_LOGIN_RES_MSGSERVER = 513,
-  CID_LOGIN_REQ_USERLOGIN = 514,
-  CID_LOGIN_RES_USERLOGIN = 515,
-  CID_LOGIN_REQ_LOGINOUT = 516,
-  CID_LOGIN_RES_LOGINOUT = 517,
-  CID_LOGIN_KICK_USER = 518,
-  CID_LOGIN_REQ_DEVICETOKEN = 519,
-  CID_LOGIN_RES_DEVICETOKEN = 520,
-  CID_LOGIN_REQ_KICKPCCLIENT = 521,
-  CID_LOGIN_RES_KICKPCCLIENT = 522,
-  CID_LOGIN_REQ_PUSH_SHIELD = 523,
-  CID_LOGIN_RES_PUSH_SHIELD = 524,
-  CID_LOGIN_REQ_QUERY_PUSH_SHIELD = 525,
-  CID_LOGIN_RES_QUERY_PUSH_SHIELD = 526,
-  LoginCmdID_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  LoginCmdID_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool LoginCmdID_IsValid(int value);
-const LoginCmdID LoginCmdID_MIN = CID_LOGIN_NONE;
-const LoginCmdID LoginCmdID_MAX = CID_LOGIN_RES_QUERY_PUSH_SHIELD;
-const int LoginCmdID_ARRAYSIZE = LoginCmdID_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* LoginCmdID_descriptor();
-inline const ::std::string& LoginCmdID_Name(LoginCmdID value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    LoginCmdID_descriptor(), value);
-}
-inline bool LoginCmdID_Parse(
-    const ::std::string& name, LoginCmdID* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<LoginCmdID>(
-    LoginCmdID_descriptor(), name, value);
-}
-enum RegisterResult {
+enum ResultType {
   REGISTER_SUCCESS = 0,
   REGISTER_ALREADY_EXIST = 1,
   REGISTER_OTHER_FAILUER = 2,
-  RegisterResult_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  RegisterResult_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+  LOGIN_SUCCESS = 16,
+  LOGIN_PASSWORD_ERROR = 17,
+  LOGIN_NO_SUCH_USER = 18,
+  LOGIN_TOO_MANY_PASSWORD_ERROR = 19,
+  LOGIN_KICK_USER = 20,
+  SERVER_NO_PROXY_SERVER = 65520,
+  ResultType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ResultType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool RegisterResult_IsValid(int value);
-const RegisterResult RegisterResult_MIN = REGISTER_SUCCESS;
-const RegisterResult RegisterResult_MAX = REGISTER_OTHER_FAILUER;
-const int RegisterResult_ARRAYSIZE = RegisterResult_MAX + 1;
+bool ResultType_IsValid(int value);
+const ResultType ResultType_MIN = REGISTER_SUCCESS;
+const ResultType ResultType_MAX = SERVER_NO_PROXY_SERVER;
+const int ResultType_ARRAYSIZE = ResultType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* RegisterResult_descriptor();
-inline const ::std::string& RegisterResult_Name(RegisterResult value) {
+const ::google::protobuf::EnumDescriptor* ResultType_descriptor();
+inline const ::std::string& ResultType_Name(ResultType value) {
   return ::google::protobuf::internal::NameOfEnum(
-    RegisterResult_descriptor(), value);
+    ResultType_descriptor(), value);
 }
-inline bool RegisterResult_Parse(
-    const ::std::string& name, RegisterResult* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<RegisterResult>(
-    RegisterResult_descriptor(), name, value);
+inline bool ResultType_Parse(
+    const ::std::string& name, ResultType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ResultType>(
+    ResultType_descriptor(), name, value);
+}
+enum MsgServerResultType {
+  REFUSE_REASON_NONE = 0,
+  REFUSE_REASON_NO_MSG_SERVER = 1,
+  REFUSE_REASON_MSG_SERVER_FULL = 2,
+  REFUSE_REASON_NO_DB_SERVER = 3,
+  REFUSE_REASON_NO_LOGIN_SERVER = 4,
+  REFUSE_REASON_NO_ROUTE_SERVER = 5,
+  REFUSE_REASON_DB_VALIDATE_FAILED = 6,
+  MsgServerResultType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  MsgServerResultType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool MsgServerResultType_IsValid(int value);
+const MsgServerResultType MsgServerResultType_MIN = REFUSE_REASON_NONE;
+const MsgServerResultType MsgServerResultType_MAX = REFUSE_REASON_DB_VALIDATE_FAILED;
+const int MsgServerResultType_ARRAYSIZE = MsgServerResultType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* MsgServerResultType_descriptor();
+inline const ::std::string& MsgServerResultType_Name(MsgServerResultType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    MsgServerResultType_descriptor(), value);
+}
+inline bool MsgServerResultType_Parse(
+    const ::std::string& name, MsgServerResultType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MsgServerResultType>(
+    MsgServerResultType_descriptor(), name, value);
+}
+enum ProxyServerResultType {
+  PROXYXERVER_NONE = 0,
+  PROXYSERVER_TOO_MANY_PASSWORD_ERROR = 1,
+  PROXYSERVER_PASSWORD_ERROR = 2,
+  ProxyServerResultType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ProxyServerResultType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ProxyServerResultType_IsValid(int value);
+const ProxyServerResultType ProxyServerResultType_MIN = PROXYXERVER_NONE;
+const ProxyServerResultType ProxyServerResultType_MAX = PROXYSERVER_PASSWORD_ERROR;
+const int ProxyServerResultType_ARRAYSIZE = ProxyServerResultType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ProxyServerResultType_descriptor();
+inline const ::std::string& ProxyServerResultType_Name(ProxyServerResultType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ProxyServerResultType_descriptor(), value);
+}
+inline bool ProxyServerResultType_Parse(
+    const ::std::string& name, ProxyServerResultType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ProxyServerResultType>(
+    ProxyServerResultType_descriptor(), name, value);
+}
+enum UserOperation {
+  FRIEND_OPERATOIN_ADD = 0,
+  FRIEND_OPERATION_DELETE = 1,
+  UserOperation_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  UserOperation_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool UserOperation_IsValid(int value);
+const UserOperation UserOperation_MIN = FRIEND_OPERATOIN_ADD;
+const UserOperation UserOperation_MAX = FRIEND_OPERATION_DELETE;
+const int UserOperation_ARRAYSIZE = UserOperation_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* UserOperation_descriptor();
+inline const ::std::string& UserOperation_Name(UserOperation value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    UserOperation_descriptor(), value);
+}
+inline bool UserOperation_Parse(
+    const ::std::string& name, UserOperation* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<UserOperation>(
+    UserOperation_descriptor(), name, value);
+}
+enum ClientType {
+  CLIENT_TYPE_WINDOWS = 0,
+  CLIENT_TYPE_MAC = 1,
+  CLIENT_TYPE_IOS = 2,
+  CLIENT_TYPE_ANDROID = 3,
+  ClientType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ClientType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ClientType_IsValid(int value);
+const ClientType ClientType_MIN = CLIENT_TYPE_WINDOWS;
+const ClientType ClientType_MAX = CLIENT_TYPE_ANDROID;
+const int ClientType_ARRAYSIZE = ClientType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ClientType_descriptor();
+inline const ::std::string& ClientType_Name(ClientType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ClientType_descriptor(), value);
+}
+inline bool ClientType_Parse(
+    const ::std::string& name, ClientType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ClientType>(
+    ClientType_descriptor(), name, value);
 }
 // ===================================================================
 
+class UserInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BaseDefine.UserInfo) */ {
+ public:
+  UserInfo();
+  virtual ~UserInfo();
 
+  UserInfo(const UserInfo& from);
+
+  inline UserInfo& operator=(const UserInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UserInfo(UserInfo&& from) noexcept
+    : UserInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline UserInfo& operator=(UserInfo&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UserInfo& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UserInfo* internal_default_instance() {
+    return reinterpret_cast<const UserInfo*>(
+               &_UserInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  void Swap(UserInfo* other);
+  friend void swap(UserInfo& a, UserInfo& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UserInfo* New() const final {
+    return CreateMaybeMessage<UserInfo>(NULL);
+  }
+
+  UserInfo* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UserInfo>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UserInfo& from);
+  void MergeFrom(const UserInfo& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .BaseDefine.FriendList friend_list = 5;
+  int friend_list_size() const;
+  void clear_friend_list();
+  static const int kFriendListFieldNumber = 5;
+  ::BaseDefine::FriendList* mutable_friend_list(int index);
+  ::google::protobuf::RepeatedPtrField< ::BaseDefine::FriendList >*
+      mutable_friend_list();
+  const ::BaseDefine::FriendList& friend_list(int index) const;
+  ::BaseDefine::FriendList* add_friend_list();
+  const ::google::protobuf::RepeatedPtrField< ::BaseDefine::FriendList >&
+      friend_list() const;
+
+  // string user_name = 2;
+  void clear_user_name();
+  static const int kUserNameFieldNumber = 2;
+  const ::std::string& user_name() const;
+  void set_user_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_user_name(::std::string&& value);
+  #endif
+  void set_user_name(const char* value);
+  void set_user_name(const char* value, size_t size);
+  ::std::string* mutable_user_name();
+  ::std::string* release_user_name();
+  void set_allocated_user_name(::std::string* user_name);
+
+  // string signature = 4;
+  void clear_signature();
+  static const int kSignatureFieldNumber = 4;
+  const ::std::string& signature() const;
+  void set_signature(const ::std::string& value);
+  #if LANG_CXX11
+  void set_signature(::std::string&& value);
+  #endif
+  void set_signature(const char* value);
+  void set_signature(const char* value, size_t size);
+  ::std::string* mutable_signature();
+  ::std::string* release_signature();
+  void set_allocated_signature(::std::string* signature);
+
+  // uint32 user_id = 1;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 1;
+  ::google::protobuf::uint32 user_id() const;
+  void set_user_id(::google::protobuf::uint32 value);
+
+  // .BaseDefine.ClientType client_type = 3;
+  void clear_client_type();
+  static const int kClientTypeFieldNumber = 3;
+  ::BaseDefine::ClientType client_type() const;
+  void set_client_type(::BaseDefine::ClientType value);
+
+  // @@protoc_insertion_point(class_scope:BaseDefine.UserInfo)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::BaseDefine::FriendList > friend_list_;
+  ::google::protobuf::internal::ArenaStringPtr user_name_;
+  ::google::protobuf::internal::ArenaStringPtr signature_;
+  ::google::protobuf::uint32 user_id_;
+  int client_type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_BaseDefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class FriendList : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:BaseDefine.FriendList) */ {
+ public:
+  FriendList();
+  virtual ~FriendList();
+
+  FriendList(const FriendList& from);
+
+  inline FriendList& operator=(const FriendList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FriendList(FriendList&& from) noexcept
+    : FriendList() {
+    *this = ::std::move(from);
+  }
+
+  inline FriendList& operator=(FriendList&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FriendList& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FriendList* internal_default_instance() {
+    return reinterpret_cast<const FriendList*>(
+               &_FriendList_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(FriendList* other);
+  friend void swap(FriendList& a, FriendList& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FriendList* New() const final {
+    return CreateMaybeMessage<FriendList>(NULL);
+  }
+
+  FriendList* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FriendList>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FriendList& from);
+  void MergeFrom(const FriendList& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FriendList* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string markname = 2;
+  void clear_markname();
+  static const int kMarknameFieldNumber = 2;
+  const ::std::string& markname() const;
+  void set_markname(const ::std::string& value);
+  #if LANG_CXX11
+  void set_markname(::std::string&& value);
+  #endif
+  void set_markname(const char* value);
+  void set_markname(const char* value, size_t size);
+  ::std::string* mutable_markname();
+  ::std::string* release_markname();
+  void set_allocated_markname(::std::string* markname);
+
+  // string teamname = 3;
+  void clear_teamname();
+  static const int kTeamnameFieldNumber = 3;
+  const ::std::string& teamname() const;
+  void set_teamname(const ::std::string& value);
+  #if LANG_CXX11
+  void set_teamname(::std::string&& value);
+  #endif
+  void set_teamname(const char* value);
+  void set_teamname(const char* value, size_t size);
+  ::std::string* mutable_teamname();
+  ::std::string* release_teamname();
+  void set_allocated_teamname(::std::string* teamname);
+
+  // uint32 friendid = 1;
+  void clear_friendid();
+  static const int kFriendidFieldNumber = 1;
+  ::google::protobuf::uint32 friendid() const;
+  void set_friendid(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:BaseDefine.FriendList)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr markname_;
+  ::google::protobuf::internal::ArenaStringPtr teamname_;
+  ::google::protobuf::uint32 friendid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_BaseDefine_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -167,9 +477,301 @@ inline bool RegisterResult_Parse(
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// UserInfo
+
+// uint32 user_id = 1;
+inline void UserInfo::clear_user_id() {
+  user_id_ = 0u;
+}
+inline ::google::protobuf::uint32 UserInfo::user_id() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.UserInfo.user_id)
+  return user_id_;
+}
+inline void UserInfo::set_user_id(::google::protobuf::uint32 value) {
+  
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:BaseDefine.UserInfo.user_id)
+}
+
+// string user_name = 2;
+inline void UserInfo::clear_user_name() {
+  user_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UserInfo::user_name() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.UserInfo.user_name)
+  return user_name_.GetNoArena();
+}
+inline void UserInfo::set_user_name(const ::std::string& value) {
+  
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:BaseDefine.UserInfo.user_name)
+}
+#if LANG_CXX11
+inline void UserInfo::set_user_name(::std::string&& value) {
+  
+  user_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:BaseDefine.UserInfo.user_name)
+}
+#endif
+inline void UserInfo::set_user_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:BaseDefine.UserInfo.user_name)
+}
+inline void UserInfo::set_user_name(const char* value, size_t size) {
+  
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:BaseDefine.UserInfo.user_name)
+}
+inline ::std::string* UserInfo::mutable_user_name() {
+  
+  // @@protoc_insertion_point(field_mutable:BaseDefine.UserInfo.user_name)
+  return user_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UserInfo::release_user_name() {
+  // @@protoc_insertion_point(field_release:BaseDefine.UserInfo.user_name)
+  
+  return user_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UserInfo::set_allocated_user_name(::std::string* user_name) {
+  if (user_name != NULL) {
+    
+  } else {
+    
+  }
+  user_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_name);
+  // @@protoc_insertion_point(field_set_allocated:BaseDefine.UserInfo.user_name)
+}
+
+// .BaseDefine.ClientType client_type = 3;
+inline void UserInfo::clear_client_type() {
+  client_type_ = 0;
+}
+inline ::BaseDefine::ClientType UserInfo::client_type() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.UserInfo.client_type)
+  return static_cast< ::BaseDefine::ClientType >(client_type_);
+}
+inline void UserInfo::set_client_type(::BaseDefine::ClientType value) {
+  
+  client_type_ = value;
+  // @@protoc_insertion_point(field_set:BaseDefine.UserInfo.client_type)
+}
+
+// string signature = 4;
+inline void UserInfo::clear_signature() {
+  signature_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UserInfo::signature() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.UserInfo.signature)
+  return signature_.GetNoArena();
+}
+inline void UserInfo::set_signature(const ::std::string& value) {
+  
+  signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:BaseDefine.UserInfo.signature)
+}
+#if LANG_CXX11
+inline void UserInfo::set_signature(::std::string&& value) {
+  
+  signature_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:BaseDefine.UserInfo.signature)
+}
+#endif
+inline void UserInfo::set_signature(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:BaseDefine.UserInfo.signature)
+}
+inline void UserInfo::set_signature(const char* value, size_t size) {
+  
+  signature_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:BaseDefine.UserInfo.signature)
+}
+inline ::std::string* UserInfo::mutable_signature() {
+  
+  // @@protoc_insertion_point(field_mutable:BaseDefine.UserInfo.signature)
+  return signature_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UserInfo::release_signature() {
+  // @@protoc_insertion_point(field_release:BaseDefine.UserInfo.signature)
+  
+  return signature_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UserInfo::set_allocated_signature(::std::string* signature) {
+  if (signature != NULL) {
+    
+  } else {
+    
+  }
+  signature_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), signature);
+  // @@protoc_insertion_point(field_set_allocated:BaseDefine.UserInfo.signature)
+}
+
+// repeated .BaseDefine.FriendList friend_list = 5;
+inline int UserInfo::friend_list_size() const {
+  return friend_list_.size();
+}
+inline void UserInfo::clear_friend_list() {
+  friend_list_.Clear();
+}
+inline ::BaseDefine::FriendList* UserInfo::mutable_friend_list(int index) {
+  // @@protoc_insertion_point(field_mutable:BaseDefine.UserInfo.friend_list)
+  return friend_list_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::BaseDefine::FriendList >*
+UserInfo::mutable_friend_list() {
+  // @@protoc_insertion_point(field_mutable_list:BaseDefine.UserInfo.friend_list)
+  return &friend_list_;
+}
+inline const ::BaseDefine::FriendList& UserInfo::friend_list(int index) const {
+  // @@protoc_insertion_point(field_get:BaseDefine.UserInfo.friend_list)
+  return friend_list_.Get(index);
+}
+inline ::BaseDefine::FriendList* UserInfo::add_friend_list() {
+  // @@protoc_insertion_point(field_add:BaseDefine.UserInfo.friend_list)
+  return friend_list_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::BaseDefine::FriendList >&
+UserInfo::friend_list() const {
+  // @@protoc_insertion_point(field_list:BaseDefine.UserInfo.friend_list)
+  return friend_list_;
+}
+
+// -------------------------------------------------------------------
+
+// FriendList
+
+// uint32 friendid = 1;
+inline void FriendList::clear_friendid() {
+  friendid_ = 0u;
+}
+inline ::google::protobuf::uint32 FriendList::friendid() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.FriendList.friendid)
+  return friendid_;
+}
+inline void FriendList::set_friendid(::google::protobuf::uint32 value) {
+  
+  friendid_ = value;
+  // @@protoc_insertion_point(field_set:BaseDefine.FriendList.friendid)
+}
+
+// string markname = 2;
+inline void FriendList::clear_markname() {
+  markname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FriendList::markname() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.FriendList.markname)
+  return markname_.GetNoArena();
+}
+inline void FriendList::set_markname(const ::std::string& value) {
+  
+  markname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:BaseDefine.FriendList.markname)
+}
+#if LANG_CXX11
+inline void FriendList::set_markname(::std::string&& value) {
+  
+  markname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:BaseDefine.FriendList.markname)
+}
+#endif
+inline void FriendList::set_markname(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  markname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:BaseDefine.FriendList.markname)
+}
+inline void FriendList::set_markname(const char* value, size_t size) {
+  
+  markname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:BaseDefine.FriendList.markname)
+}
+inline ::std::string* FriendList::mutable_markname() {
+  
+  // @@protoc_insertion_point(field_mutable:BaseDefine.FriendList.markname)
+  return markname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FriendList::release_markname() {
+  // @@protoc_insertion_point(field_release:BaseDefine.FriendList.markname)
+  
+  return markname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FriendList::set_allocated_markname(::std::string* markname) {
+  if (markname != NULL) {
+    
+  } else {
+    
+  }
+  markname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), markname);
+  // @@protoc_insertion_point(field_set_allocated:BaseDefine.FriendList.markname)
+}
+
+// string teamname = 3;
+inline void FriendList::clear_teamname() {
+  teamname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& FriendList::teamname() const {
+  // @@protoc_insertion_point(field_get:BaseDefine.FriendList.teamname)
+  return teamname_.GetNoArena();
+}
+inline void FriendList::set_teamname(const ::std::string& value) {
+  
+  teamname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:BaseDefine.FriendList.teamname)
+}
+#if LANG_CXX11
+inline void FriendList::set_teamname(::std::string&& value) {
+  
+  teamname_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:BaseDefine.FriendList.teamname)
+}
+#endif
+inline void FriendList::set_teamname(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  teamname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:BaseDefine.FriendList.teamname)
+}
+inline void FriendList::set_teamname(const char* value, size_t size) {
+  
+  teamname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:BaseDefine.FriendList.teamname)
+}
+inline ::std::string* FriendList::mutable_teamname() {
+  
+  // @@protoc_insertion_point(field_mutable:BaseDefine.FriendList.teamname)
+  return teamname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* FriendList::release_teamname() {
+  // @@protoc_insertion_point(field_release:BaseDefine.FriendList.teamname)
+  
+  return teamname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void FriendList::set_allocated_teamname(::std::string* teamname) {
+  if (teamname != NULL) {
+    
+  } else {
+    
+  }
+  teamname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), teamname);
+  // @@protoc_insertion_point(field_set_allocated:BaseDefine.FriendList.teamname)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -178,25 +780,30 @@ inline bool RegisterResult_Parse(
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::BaseDefine::ServiceID> : ::std::true_type {};
+template <> struct is_proto_enum< ::BaseDefine::ResultType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::ServiceID>() {
-  return ::BaseDefine::ServiceID_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::ResultType>() {
+  return ::BaseDefine::ResultType_descriptor();
 }
-template <> struct is_proto_enum< ::BaseDefine::RegCmdID> : ::std::true_type {};
+template <> struct is_proto_enum< ::BaseDefine::MsgServerResultType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::RegCmdID>() {
-  return ::BaseDefine::RegCmdID_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::MsgServerResultType>() {
+  return ::BaseDefine::MsgServerResultType_descriptor();
 }
-template <> struct is_proto_enum< ::BaseDefine::LoginCmdID> : ::std::true_type {};
+template <> struct is_proto_enum< ::BaseDefine::ProxyServerResultType> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::LoginCmdID>() {
-  return ::BaseDefine::LoginCmdID_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::ProxyServerResultType>() {
+  return ::BaseDefine::ProxyServerResultType_descriptor();
 }
-template <> struct is_proto_enum< ::BaseDefine::RegisterResult> : ::std::true_type {};
+template <> struct is_proto_enum< ::BaseDefine::UserOperation> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::RegisterResult>() {
-  return ::BaseDefine::RegisterResult_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::UserOperation>() {
+  return ::BaseDefine::UserOperation_descriptor();
+}
+template <> struct is_proto_enum< ::BaseDefine::ClientType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::BaseDefine::ClientType>() {
+  return ::BaseDefine::ClientType_descriptor();
 }
 
 }  // namespace protobuf

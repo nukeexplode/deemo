@@ -17,14 +17,15 @@ set(CXX_FLAGS
  -Wshadow
  -Wwrite-strings
  -march=native
- -std=c++14
+ -std=c++17
  -rdynamic
  )
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
-add_subdirectory(src/register_server)
-# add_subdirectory(proxy_server)
-add_subdirectory(src/client)
-add_subdirectory(src/proxy_server)
+# add_subdirectory(src/register_server)
+# # add_subdirectory(proxy_server)
+# add_subdirectory(src/client)
+# add_subdirectory(src/proxy_server)
+add_subdirectory(src/base/tests)

@@ -3,6 +3,7 @@
 
 #include "User.pb.h"
 #include "BaseDefine.pb.h"
+#include "Msg2Proxy.pb.h"
 
 #include <muduo/base/Timestamp.h>
 #include <muduo/base/Logging.h>
@@ -13,6 +14,7 @@
 #include "Singleton.h"
 #include "codec.h"
 #include "dispatcher.h"
+#include "BussinessLogic.h"
 
 using Timestamp = muduo::Timestamp;
 using TimerId = muduo::net::TimerId;
@@ -43,6 +45,8 @@ public:
 private:
     void handleRegister(const std::shared_ptr<TcpConnection>& conn, const std::shared_ptr<User::RegReq>& req, Timestamp t);
 
+    void handleLogin(const std::shared_ptr<TcpConnection>& conn, const std::shared_ptr<Msg2Proxy::LoginReq>& req, Timestamp t);
+
 private:
     std::string m_sessionname;
     int32_t m_id;                 //session id
@@ -51,4 +55,6 @@ private:
     Timestamp m_lastPackageTime;    //上一次收发包的时间
     TimerId m_TimerId;
     int m_interval;
+
+    BussinessLogic logic;
 };

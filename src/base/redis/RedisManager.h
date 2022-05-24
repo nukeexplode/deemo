@@ -17,5 +17,6 @@ public:
 	int Init();
 	std::shared_ptr<RedisConn> GetRedisConn(const char* pool_name);
 private:
+	//FIXME use concurrentHashMap
 	std::map<std::string, std::unique_ptr<RedisPool>> m_redis_pool_map;
 };

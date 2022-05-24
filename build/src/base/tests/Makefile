@@ -111,6 +111,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/rule:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/rule
+.PHONY : src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/rule
+
+# Convenience name for target.
+ConcurrentHashMap_test: src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/rule
+
+.PHONY : ConcurrentHashMap_test
+
+# fast build rule for target.
+ConcurrentHashMap_test/fast:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build.make src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build
+.PHONY : ConcurrentHashMap_test/fast
+
+# Convenience name for target.
+src/base/tests/CMakeFiles/RedisPool_test.dir/rule:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/RedisPool_test.dir/rule
+.PHONY : src/base/tests/CMakeFiles/RedisPool_test.dir/rule
+
+# Convenience name for target.
+RedisPool_test: src/base/tests/CMakeFiles/RedisPool_test.dir/rule
+
+.PHONY : RedisPool_test
+
+# fast build rule for target.
+RedisPool_test/fast:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/build
+.PHONY : RedisPool_test/fast
+
+# Convenience name for target.
 src/base/tests/CMakeFiles/DatabasePool_test.dir/rule:
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f CMakeFiles/Makefile2 src/base/tests/CMakeFiles/DatabasePool_test.dir/rule
 .PHONY : src/base/tests/CMakeFiles/DatabasePool_test.dir/rule
@@ -154,6 +184,33 @@ singleton_test: src/base/tests/CMakeFiles/singleton_test.dir/rule
 singleton_test/fast:
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/build
 .PHONY : singleton_test/fast
+
+ConcurrentHashMap_test.o: ConcurrentHashMap_test.cpp.o
+
+.PHONY : ConcurrentHashMap_test.o
+
+# target to build an object file
+ConcurrentHashMap_test.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build.make src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/ConcurrentHashMap_test.cpp.o
+.PHONY : ConcurrentHashMap_test.cpp.o
+
+ConcurrentHashMap_test.i: ConcurrentHashMap_test.cpp.i
+
+.PHONY : ConcurrentHashMap_test.i
+
+# target to preprocess a source file
+ConcurrentHashMap_test.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build.make src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/ConcurrentHashMap_test.cpp.i
+.PHONY : ConcurrentHashMap_test.cpp.i
+
+ConcurrentHashMap_test.s: ConcurrentHashMap_test.cpp.s
+
+.PHONY : ConcurrentHashMap_test.s
+
+# target to generate assembly for a file
+ConcurrentHashMap_test.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/build.make src/base/tests/CMakeFiles/ConcurrentHashMap_test.dir/ConcurrentHashMap_test.cpp.s
+.PHONY : ConcurrentHashMap_test.cpp.s
 
 ConfigFileReader_test.o: ConfigFileReader_test.cpp.o
 
@@ -209,6 +266,33 @@ DatabasePool_test.cpp.s:
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/DatabasePool_test.cpp.s
 .PHONY : DatabasePool_test.cpp.s
 
+RedisPool_test.o: RedisPool_test.cpp.o
+
+.PHONY : RedisPool_test.o
+
+# target to build an object file
+RedisPool_test.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/RedisPool_test.cpp.o
+.PHONY : RedisPool_test.cpp.o
+
+RedisPool_test.i: RedisPool_test.cpp.i
+
+.PHONY : RedisPool_test.i
+
+# target to preprocess a source file
+RedisPool_test.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/RedisPool_test.cpp.i
+.PHONY : RedisPool_test.cpp.i
+
+RedisPool_test.s: RedisPool_test.cpp.s
+
+.PHONY : RedisPool_test.s
+
+# target to generate assembly for a file
+RedisPool_test.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/RedisPool_test.cpp.s
+.PHONY : RedisPool_test.cpp.s
+
 Singleton_test.o: Singleton_test.cpp.o
 
 .PHONY : Singleton_test.o
@@ -242,6 +326,7 @@ __/ConfigFileReader.o: __/ConfigFileReader.cpp.o
 
 # target to build an object file
 __/ConfigFileReader.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/ConfigFileReader.cpp.o
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/__/ConfigFileReader.cpp.o
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/__/ConfigFileReader.cpp.o
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/__/ConfigFileReader.cpp.o
@@ -253,6 +338,7 @@ __/ConfigFileReader.i: __/ConfigFileReader.cpp.i
 
 # target to preprocess a source file
 __/ConfigFileReader.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/ConfigFileReader.cpp.i
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/__/ConfigFileReader.cpp.i
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/__/ConfigFileReader.cpp.i
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/__/ConfigFileReader.cpp.i
@@ -264,6 +350,7 @@ __/ConfigFileReader.s: __/ConfigFileReader.cpp.s
 
 # target to generate assembly for a file
 __/ConfigFileReader.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/ConfigFileReader.cpp.s
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/__/ConfigFileReader.cpp.s
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/ConfigFileReader_test.dir/build.make src/base/tests/CMakeFiles/ConfigFileReader_test.dir/__/ConfigFileReader.cpp.s
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/singleton_test.dir/build.make src/base/tests/CMakeFiles/singleton_test.dir/__/ConfigFileReader.cpp.s
@@ -404,6 +491,87 @@ __/database/QueryResult.cpp.s:
 	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/DatabasePool_test.dir/build.make src/base/tests/CMakeFiles/DatabasePool_test.dir/__/database/QueryResult.cpp.s
 .PHONY : __/database/QueryResult.cpp.s
 
+__/redis/RedisConn.o: __/redis/RedisConn.cpp.o
+
+.PHONY : __/redis/RedisConn.o
+
+# target to build an object file
+__/redis/RedisConn.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisConn.cpp.o
+.PHONY : __/redis/RedisConn.cpp.o
+
+__/redis/RedisConn.i: __/redis/RedisConn.cpp.i
+
+.PHONY : __/redis/RedisConn.i
+
+# target to preprocess a source file
+__/redis/RedisConn.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisConn.cpp.i
+.PHONY : __/redis/RedisConn.cpp.i
+
+__/redis/RedisConn.s: __/redis/RedisConn.cpp.s
+
+.PHONY : __/redis/RedisConn.s
+
+# target to generate assembly for a file
+__/redis/RedisConn.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisConn.cpp.s
+.PHONY : __/redis/RedisConn.cpp.s
+
+__/redis/RedisManager.o: __/redis/RedisManager.cpp.o
+
+.PHONY : __/redis/RedisManager.o
+
+# target to build an object file
+__/redis/RedisManager.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisManager.cpp.o
+.PHONY : __/redis/RedisManager.cpp.o
+
+__/redis/RedisManager.i: __/redis/RedisManager.cpp.i
+
+.PHONY : __/redis/RedisManager.i
+
+# target to preprocess a source file
+__/redis/RedisManager.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisManager.cpp.i
+.PHONY : __/redis/RedisManager.cpp.i
+
+__/redis/RedisManager.s: __/redis/RedisManager.cpp.s
+
+.PHONY : __/redis/RedisManager.s
+
+# target to generate assembly for a file
+__/redis/RedisManager.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisManager.cpp.s
+.PHONY : __/redis/RedisManager.cpp.s
+
+__/redis/RedisPool.o: __/redis/RedisPool.cpp.o
+
+.PHONY : __/redis/RedisPool.o
+
+# target to build an object file
+__/redis/RedisPool.cpp.o:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisPool.cpp.o
+.PHONY : __/redis/RedisPool.cpp.o
+
+__/redis/RedisPool.i: __/redis/RedisPool.cpp.i
+
+.PHONY : __/redis/RedisPool.i
+
+# target to preprocess a source file
+__/redis/RedisPool.cpp.i:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisPool.cpp.i
+.PHONY : __/redis/RedisPool.cpp.i
+
+__/redis/RedisPool.s: __/redis/RedisPool.cpp.s
+
+.PHONY : __/redis/RedisPool.s
+
+# target to generate assembly for a file
+__/redis/RedisPool.cpp.s:
+	cd /home/nukeexplode/Desktop/deemo/build && $(MAKE) -f src/base/tests/CMakeFiles/RedisPool_test.dir/build.make src/base/tests/CMakeFiles/RedisPool_test.dir/__/redis/RedisPool.cpp.s
+.PHONY : __/redis/RedisPool.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -412,15 +580,23 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... ConcurrentHashMap_test"
+	@echo "... RedisPool_test"
 	@echo "... DatabasePool_test"
 	@echo "... ConfigFileReader_test"
 	@echo "... singleton_test"
+	@echo "... ConcurrentHashMap_test.o"
+	@echo "... ConcurrentHashMap_test.i"
+	@echo "... ConcurrentHashMap_test.s"
 	@echo "... ConfigFileReader_test.o"
 	@echo "... ConfigFileReader_test.i"
 	@echo "... ConfigFileReader_test.s"
 	@echo "... DatabasePool_test.o"
 	@echo "... DatabasePool_test.i"
 	@echo "... DatabasePool_test.s"
+	@echo "... RedisPool_test.o"
+	@echo "... RedisPool_test.i"
+	@echo "... RedisPool_test.s"
 	@echo "... Singleton_test.o"
 	@echo "... Singleton_test.i"
 	@echo "... Singleton_test.s"
@@ -442,6 +618,15 @@ help:
 	@echo "... __/database/QueryResult.o"
 	@echo "... __/database/QueryResult.i"
 	@echo "... __/database/QueryResult.s"
+	@echo "... __/redis/RedisConn.o"
+	@echo "... __/redis/RedisConn.i"
+	@echo "... __/redis/RedisConn.s"
+	@echo "... __/redis/RedisManager.o"
+	@echo "... __/redis/RedisManager.i"
+	@echo "... __/redis/RedisManager.s"
+	@echo "... __/redis/RedisPool.o"
+	@echo "... __/redis/RedisPool.i"
+	@echo "... __/redis/RedisPool.s"
 .PHONY : help
 
 

@@ -39,9 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/nukeexplode/Desktop/deemo/build/src/register_server/cmake_install.cmake")
-  include("/home/nukeexplode/Desktop/deemo/build/src/client/cmake_install.cmake")
-  include("/home/nukeexplode/Desktop/deemo/build/src/proxy_server/cmake_install.cmake")
+  include("/home/nukeexplode/Desktop/deemo/build/src/base/tests/cmake_install.cmake")
 
 endif()
 

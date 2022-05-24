@@ -9,6 +9,7 @@ ProxySession::ProxySession(const std::shared_ptr<TcpConnection>& conn, const std
     m_interval = 15;
     m_dispatcher.setDefaultCallback(std::bind(&ProxySession::onUnknownMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     m_dispatcher.registerMessageCallback<User::RegReq>(std::bind(&ProxySession::handleRegister, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    m_dispatcher.registerMessageCallback<Msg2Proxy::LoginReq>(std::bind(&ProxySession::handleLogin, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     m_codec.setMessageCallback(std::bind(&ProtobufDispatcher::onProtobufMessage, &m_dispatcher, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     enableHeartbeat();
 }
@@ -69,12 +70,19 @@ void ProxySession::handleRegister(const std::shared_ptr<TcpConnection>& conn, co
     User::RegRsp rsp;
     if (pDBconn->execute(query) == false) {
         LOG_ERROR << "Register user failed : " << query;
-        rsp.set_result_code(BaseDefine::RegisterResult::REGISTER_OTHER_FAILUER);
+        rsp.set_result_code(BaseDefine::ResultType::REGISTER_OTHER_FAILUER);
     }
 
     rsp.set_userid(pDBconn->GetInsertId());
     rsp.set_username(req->username());
-    rsp.set_result_code(BaseDefine::RegisterResult::REGISTER_SUCCESS);
+    rsp.set_result_code(BaseDefine::ResultType::REGISTER_SUCCESS);
+
+    send(&rsp);
+}
+
+void ProxySession::handleLogin(const std::shared_ptr<TcpConnection>& conn, const std::shared_ptr<Msg2Proxy::LoginReq>& req, Timestamp t) {
+    std::string retData;
+    Msg2Proxy::LoginRsp rsp = logic.handleLogin(conn, req, t);
 
     send(&rsp);
 }

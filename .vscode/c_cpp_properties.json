@@ -6,20 +6,20 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/base/**",
                 "${workspaceFolder}/src/proxy_server/**",
+                "${workspaceFolder}/src/msg_server/**",
                 "${workspaceFolder}/src/register_server/**",
                 "${workspaceFolder}/src/base/pb/protocol/**",
-                "${workspaceFolder}/src/register_server/business/**",
                 "${workspaceFolder}/src/base/pb/protocol",
                 "${workspaceFolder}/src/base",
-                "${workspaceFolder}/src/base/client",
                 "${workspaceFolder}/src/register_server",
                 "${workspaceFolder}/src/client",
-                "${workspaceFolder}/src/base/database"
+                "${workspaceFolder}/src/base/database",
+                "${workspaceFolder}/src/base/redis"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-8",
             "cStandard": "c11",
-            "cppStandard": "c++14",
+            "cppStandard": "c++17",
             "intelliSenseMode": "linux-clang-x64"
         }
     ],
